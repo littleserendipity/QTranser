@@ -13,7 +13,7 @@ namespace QTranser
         public static void str(Object obj)
         {
             string path = @"C:\Users\Administrator\Desktop\log.txt";
-            using (StreamWriter sw = new StreamWriter(path, true, Encoding.UTF8))
+            using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
             {
                 sw.Write(obj);
                 sw.Write(Environment.NewLine);
@@ -22,7 +22,7 @@ namespace QTranser
         public static void json(dynamic obj)
         {
             string path = @"C:\Users\Administrator\Desktop\log.json";
-            using (StreamWriter sw = new StreamWriter(path, true, Encoding.UTF8))
+            using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
             {
                 JsonSerializer serializer = JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented });
                 serializer.Serialize(sw, obj);

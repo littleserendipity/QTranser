@@ -23,6 +23,7 @@ using WindowsInput.Native;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using CSDeskBand;
+using System.Net;
 
 namespace QTranser
 {
@@ -86,10 +87,9 @@ namespace QTranser
             }
         }
 
-        private void OnClipboardUpdate(object sender, EventArgs e)
+
+        private string ClipboardGetText()
         {
-            Mvvm.StrQ = "...";
-            Mvvm.StrI = "...";
             var str = "";
             if (Clipboard.ContainsText())
             {
@@ -97,17 +97,26 @@ namespace QTranser
                 catch (Exception err)
                 { MessageBox.Show(err.ToString()); }
             }
+            return str;
+        }
 
-            var translator = new Translator();
-            string transResultJson = translator.dao(str);
-            dynamic transResult = JToken.Parse(transResultJson) as dynamic;
-            Mvvm.StrI = str;
-            // 将翻译结果写入 transResult.json 文件
-            Loger.json(transResult);
-
-            string resultStr = transResult?.translation?[0] + Environment.NewLine;
+        private void OnClipboardUpdate(object sender, EventArgs e)
+        {
+            Mvvm.StrQ = "...";
+            Mvvm.StrI = "...";
             try
             {
+                string str = ClipboardGetText();
+
+                var translator = new Translator();
+                string transResultJson = translator.dao(str);
+                dynamic transResult = JToken.Parse(transResultJson) as dynamic;
+                Mvvm.StrI = str;
+                // 将翻译结果写入 transResult.json 文件
+                Loger.json(transResult);
+
+                string resultStr = transResult?.translation?[0] + Environment.NewLine;
+
                 if (transResult?.basic != null)
                 {
                     resultStr += "----------------" + Environment.NewLine;
@@ -134,6 +143,12 @@ namespace QTranser
                 }
                 Mvvm.StrQ = transResult?.translation?[0];
                 Mvvm.StrO = resultStr.Substring(0, resultStr.Length - 2); 
+            }
+            catch (WebException err)
+            {
+                Mvvm.StrQ = "哎呦~无法连接网络...";
+                Mvvm.StrI = "哎呦~无法连接网络...";
+                Mvvm.StrO = "Ouch ~ can't connect to Internet...";
             }
             catch (Exception err)
             {
