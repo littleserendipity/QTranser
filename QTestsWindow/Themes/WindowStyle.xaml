@@ -1,0 +1,19 @@
+﻿<ResourceDictionary 
+    x:Class="QTestsWindow.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:QTestsWindow">
+    <Style x:Key="CustomWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome
+                    CaptionHeight="400"
+                    CornerRadius="11,30,0,0"
+                    GlassFrameThickness="0"
+                    NonClientFrameEdges="None"
+                    UseAeroCaptionButtons="True">
+                </WindowChrome>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

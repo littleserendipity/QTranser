@@ -1,0 +1,15 @@
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\bin\Debug\QTestsWindow.exe.config
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\bin\Debug\QTestsWindow.exe
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\bin\Debug\QTestsWindow.pdb
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\App.g.cs
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow_MarkupCompile.cache
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow_MarkupCompile.lref
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\MainWindow.baml
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\Themes\WindowStyle.baml
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.g.resources
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.Properties.Resources.resources
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.csproj.GenerateResource.cache
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.exe
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.pdb
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\Themes\WindowStyle.g.cs

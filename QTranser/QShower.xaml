@@ -1,0 +1,126 @@
+﻿<Window x:Class="QTranser.QShower"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QTranser"
+        Width="270"
+        Background="{Binding LogoColor}"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"  Deactivated="Window_Deactivated">
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            CaptionHeight="13"
+            CornerRadius="11,11,0,0"
+            GlassFrameThickness="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <DockPanel >
+                                <ContentPresenter ContentSource="Header" />
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Foreground"  Value="LightGray"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="TabStripPlacement" Value="top"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Foreground" Value="White"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type Button}">
+            <Border x:Name="Border"  CornerRadius="2" Background="Transparent" Cursor="Hand"
+                    Height="18" Width="18">
+                <Path Data="M479.075523 711.254681c0 70.2291 0.083871 114.20878 0.218064 140.734974l-148.360914 106.16768 0 65.842665c0 0 137.164181-31.552144 156.372659-56.247861 19.212672-24.685233 1.369189 45.264997 24.691523 45.264997 23.324432 0 5.476754-69.95023 24.695717-45.264997 19.206382 24.695717 156.372659 56.247861 156.372659 56.247861l0-65.842665-148.375592-106.16768c0.14258-26.526194 0.226451-70.505874 0.226451-140.734974 0-283.942036 460.894459 0 460.894459 0l0-79.555518-115.225712-85.227272 0-65.662343c0-9.083193-13.343823-16.461715-24.685233-16.461715-11.351894 0-24.695717 7.378522-24.695717 16.461715l0 29.119895-85.724206-63.422996c0-178.315322-28.115543-160.490709-28.115543-160.490709s-21.938469 15.094623-24.685233 100.128992c-1.645962 51.108686-52.339488 15.51817-92.547084-21.017988l-22.569596-104.490267-26.182325-14.138497c0-35.590516 0-81.312609 0-129.18179C561.379902 13.064953 511.307019 0 511.307019 0s-48.693211 13.054469-48.693211 117.311994c0 47.240151 0 92.396117 0 127.766473l-28.803283 14.329303-23.194432 106.176067 0.016774 0c3.310794-1.945799 6.558686-4.151598 9.735287-6.470622-3.159827 2.966925-6.407719 5.938043-9.735287 8.919645-39.630985 35.456323-87.693069 67.884915-89.311773 18.12445-2.748861-85.051143-24.691523-100.128992-24.691523-100.128992s-28.115543-17.824613-28.115543 160.490709l-85.724206 63.406222 0-29.119895c0-9.083193-13.335436-16.461715-24.691523-16.461715s-24.691523 7.378522-24.691523 16.461715l0 65.662343L18.187353 631.697066l0 79.555518C18.187353 711.254681 479.075523 427.310549 479.075523 711.254681z" 
+                      x:Name="Pather"    
+                      Fill="Gray" 
+                      Stretch="Fill"
+                      Height="12" Width="12" HorizontalAlignment="Center" 
+                      WindowChrome.IsHitTestVisibleInChrome="True" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="Pather" Property="Fill" Value="LightGray"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="Pather" Property="Fill" Value="White"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Control.Template" Value="{StaticResource ButtonTemplate}">
+                
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel Background="#4C000000">
+        <Button 
+            WindowChrome.IsHitTestVisibleInChrome="True" 
+                Template="{StaticResource ButtonTemplate}"
+                Margin="189,0,57,0"
+                Click="Button_Click" 
+                Background="Pink" Height="21"/>
+        <TabControl 
+            Margin="7 0"
+            Background="Transparent" BorderThickness="0" >
+            <TabItem Header="QTranser">
+                <StackPanel Margin="5 11">
+                    <Grid Height="170" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBox Text="{Binding StrI}" 
+                                 Grid.Row="0"
+                                 MaxLines="3"
+                                 FontSize="14"
+                                 TextWrapping="Wrap"
+                                 Background="Transparent" 
+                                 Foreground="White"
+                                 CaretBrush="LightBlue"
+                                 BorderThickness="2 0 0 0"/>
+                        <Border
+                            Grid.Row="1"
+                            Margin="0 11"
+                            CornerRadius="4" Background="#35000000" >
+                            <TextBox Text="{Binding StrO}" 
+                                     FontSize="14"
+                                     TextWrapping="Wrap"
+                                     Background="Transparent"
+                                     Foreground="White"
+                                     CaretBrush="LightBlue"
+                                     BorderThickness="0"
+                                     VerticalContentAlignment="Center" />
+                        </Border>
+                    </Grid>
+                    <ListBox />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="   History">
+                <StackPanel />
+            </TabItem>
+            <TabItem Header="&gt;&gt;" Margin="0,0,-50,0" HorizontalAlignment="Right">
+                <StackPanel />
+            </TabItem>
+        </TabControl>
+
+    </StackPanel>
+</Window>
