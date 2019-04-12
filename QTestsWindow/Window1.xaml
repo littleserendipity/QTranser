@@ -1,0 +1,30 @@
+﻿<Window x:Class="QTestsWindow.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QTestsWindow"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <StackPanel>
+        <ListBox Name="lstProducts" Margin="5" DisplayMemberPath="ModelName">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="ListBoxItem.Background" Value="LightSteelBlue"/>
+                    <Setter Property="ListBoxItem.Margin" Value="5"/>
+                    <Setter Property="ListBoxItem.Padding" Value="5"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="DarkRed"/>
+                            <Setter Property="Foreground" Value="Red"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="5"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <ListBox x:Name="listBox" ItemsSource="{Binding Persons}" DisplayMemberPath="Name" Margin="60"/>
+        <ListBox x:Name="listBox1" ItemsSource="{Binding Persons}" DisplayMemberPath="Age" Margin="60"/>
+    </StackPanel>
+</Window>

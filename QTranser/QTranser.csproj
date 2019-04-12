@@ -74,6 +74,8 @@
     <Compile Include="QTranseLib\GlobalHotKey\Internal\WinApi.cs" />
     <Compile Include="QTranseLib\GlobalHotKey\KeyPressedEventArgs.cs" />
     <Compile Include="QTranseLib\ForegroundWindow.cs" />
+    <Compile Include="QTranseLib\HotKeyEditor\HotKey.cs" />
+    <Compile Include="QTranseLib\HotKeyEditor\HotKeyHelper.cs" />
     <Compile Include="QTranseLib\SysColorChanger.cs" />
     <Compile Include="QTranseLib\YoudaoTranslator.cs" />
     <Compile Include="ViewModles\MainViewModel.cs" />

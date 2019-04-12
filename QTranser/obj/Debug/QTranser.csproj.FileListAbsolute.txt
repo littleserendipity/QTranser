@@ -25,3 +25,4 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\WindowsInput.dll
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\WindowsInput.xml
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QShower.g.cs
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QShower.baml
+C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\GeneratedInternalTypeHelper.g.cs

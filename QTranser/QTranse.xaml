@@ -12,6 +12,9 @@
         <TextBox 
             x:Name="textBox"
             Text="{Binding StrQ}"
+            ContextMenu="{x:Null}"
+            SelectionBrush="{Binding LogoColor, Mode=TwoWay}"
+            SelectionOpacity="0.5" 
             VerticalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="0,2,0,0"
@@ -24,8 +27,6 @@
             CaretBrush="Gray" 
             TextWrapping="NoWrap"
             MaxLines="1"
-            SelectionBrush="{Binding LogoColor, Mode=TwoWay}"
-            SelectionOpacity="0.5" 
             />
         <Rectangle 
             Fill="{Binding LogoColor}"
@@ -33,7 +34,6 @@
             Height="22" 
             MouseLeftButtonDown="ShowQShower_MouseLeftButtonDown" 
             MouseEnter="Rectangle_MouseEnter"
-            MouseLeave="Rectangle_MouseLeave"
             />
     </StackPanel>
 </UserControl>

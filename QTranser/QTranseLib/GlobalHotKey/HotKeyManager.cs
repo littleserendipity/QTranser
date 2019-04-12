@@ -19,7 +19,7 @@ namespace GlobalHotKey
         private readonly HwndSource _windowHandleSource;
 
         private readonly Dictionary<HotKey, int> _registered;
-
+        HotKey hotKey;
         /// <summary>
         /// Occurs when registered system-wide hot key is pressed.
         /// </summary>
@@ -48,7 +48,7 @@ namespace GlobalHotKey
         /// <returns>The registered <see cref="HotKey"/>.</returns>
         public HotKey Register(Key key, ModifierKeys modifiers)
         {
-            var hotKey = new HotKey(key, modifiers);
+            hotKey = new HotKey(key, modifiers);
             Register(hotKey);
             return hotKey;
         }
@@ -139,6 +139,11 @@ namespace GlobalHotKey
             var handler = KeyPressed;
             if (handler != null)
                 handler(this, e);
+        }
+
+        public override string ToString()
+        {
+            return $"{(hotKey.Modifiers.ToString() == "Control" ? "Ctrl" : hotKey.Modifiers.ToString())}+{ hotKey.Key.ToString() }";
         }
     }
 }

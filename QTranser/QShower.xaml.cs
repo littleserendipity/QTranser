@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotKeyEditor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,7 @@ namespace QTranser
             DataContext = QTranse.Mvvm;
             this.Height = SystemParameters.WorkArea.Height / 2;
         }
-
-        public void Window_Deactivated(object sender, EventArgs e)
+        private void Window_Deactivated(object sender, EventArgs e)
         {
             this.Visibility = Visibility.Hidden;
         }

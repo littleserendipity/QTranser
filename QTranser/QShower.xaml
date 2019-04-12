@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QTranser"
+        xmlns:hotKey="clr-namespace:HotKeyEditor"
         Width="270"
         Background="{Binding LogoColor}"
         ShowInTaskbar="False"
@@ -69,6 +70,8 @@
                 
             </Setter>
         </Style>
+
+
     </Window.Resources>
 
     <StackPanel Background="#4C000000">
@@ -89,6 +92,7 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBox Text="{Binding StrI}" 
+                                 ContextMenu="{x:Null}"
                                  Grid.Row="0"
                                  MaxLines="3"
                                  FontSize="14"
@@ -96,12 +100,14 @@
                                  Background="Transparent" 
                                  Foreground="White"
                                  CaretBrush="LightBlue"
+                               
                                  BorderThickness="2 0 0 0"/>
                         <Border
                             Grid.Row="1"
                             Margin="0 11"
                             CornerRadius="4" Background="#35000000" >
                             <TextBox Text="{Binding StrO}" 
+                                     ContextMenu="{x:Null}"
                                      FontSize="14"
                                      TextWrapping="Wrap"
                                      Background="Transparent"
@@ -111,14 +117,45 @@
                                      VerticalContentAlignment="Center" />
                         </Border>
                     </Grid>
-                    <ListBox />
+                    <ListBox x:Name="HistoryList" ItemsSource="{Binding HistoryWord}">
+                        
+                    </ListBox>
                 </StackPanel>
             </TabItem>
             <TabItem Header="   History">
                 <StackPanel />
             </TabItem>
             <TabItem Header="&gt;&gt;" Margin="0,0,-50,0" HorizontalAlignment="Right">
-                <StackPanel />
+                <StackPanel >
+                    <StackPanel.Resources>
+                        <Style x:Key="HotKeyStyle" TargetType="{x:Type TextBox}">
+                            <Setter Property="Margin" Value="5"/>
+                            <Setter Property="MinLines" Value="2"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="CaretBrush" Value="Transparent"/>
+                            <Setter Property="SelectionBrush" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="Foreground" Value="LightGray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock Text="          鼠标点击高亮后&#x000A;直接在键盘上输入新的快捷键" FontSize="12" 
+                               HorizontalAlignment="Center"
+                               Foreground="Gray"
+                               Margin="14"
+                               />
+                    <TextBox x:Name="HotKeyQ" Text="{Binding HotKeyQ}" Style="{StaticResource HotKeyStyle}" ContextMenu="{x:Null}" hotKey:HotKeyHelper.IsHotKeyEditor="True"></TextBox>
+                    <TextBox x:Name="HotKeyW" Text="{Binding HotKeyW}" Style="{StaticResource HotKeyStyle}" ContextMenu="{x:Null}" hotKey:HotKeyHelper.IsHotKeyEditor="True"></TextBox>
+                    <TextBox x:Name="HotKeyB" Text="{Binding HotKeyB}" Style="{StaticResource HotKeyStyle}" ContextMenu="{x:Null}" hotKey:HotKeyHelper.IsHotKeyEditor="True"></TextBox>
+                    <TextBox x:Name="HotKeyG" Text="{Binding HotKeyG}" Style="{StaticResource HotKeyStyle}" ContextMenu="{x:Null}" hotKey:HotKeyHelper.IsHotKeyEditor="True"></TextBox>
+                </StackPanel>
             </TabItem>
         </TabControl>
 
