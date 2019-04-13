@@ -26,6 +26,7 @@ using CSDeskBand;
 using System.Net;
 using System.Threading;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace QTranser
 {
@@ -34,11 +35,6 @@ namespace QTranser
     /// </summary>
     public partial class QTranse : UserControl
     {
-        public QTranse()
-        {
-            InitializeComponent();
-        }
-
         public static Edge edge { get; set; }
         public static MainViewModel Mvvm { get; set; } = new MainViewModel();
         public static HotKeyManager HotKeyManage;
@@ -48,11 +44,14 @@ namespace QTranser
         private QShower _shower { get; set; } = new QShower();
         private ForegroundWindow _foregroundWindow { get; set; } = new ForegroundWindow();
 
-       
+        public QTranse()
+        {
+            InitializeComponent();
+            DataContext = Mvvm;
+        }
 
         private void QTranser_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = Mvvm;
             _clipboardMonitor = new ClipboardMonitor(this);
             _clipboardMonitor.ClipboardUpdate += OnClipboardUpdate;
 
@@ -64,24 +63,26 @@ namespace QTranser
             SysColor.SysColorChange += () => Mvvm.LogoColor = SystemParameters.WindowGlassBrush;
 
             ShowQShower_MouseLeftButtonDown(null, null);
-
-          
         }
 
         private void OnClipboardUpdate(object sender, EventArgs e)
         {
+            string str = ClipboardGetText();
+            if (str == "") return;
+            str = AddSpacesBeforeCapitalLetters(str);
+
             Mvvm.StrQ = "...";
             Mvvm.StrI = "...";
-            TansResultProcessing(ClipboardGetText());
-            try
+            TranslationResultDisplay(str);
+
+            bool isRepeat = Mvvm.HistoryWord.Any<HistoryWord>(o => o.Word.Trim().ToLower() == str.Trim().ToLower());
+            if(isRepeat) return;
+            else
             {
-                Mvvm.HistoryWord.Insert(0, ClipboardGetText());
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.ToString());
+                Mvvm.HistoryWord.Insert(0, new HistoryWord() { Word = str });
             }
 
+            if (Mvvm.HistoryWord.Count > 12) Mvvm.HistoryWord.RemoveAt(12);
         }
         private string ClipboardGetText()
         {
@@ -90,15 +91,22 @@ namespace QTranser
             {
                 try { str = Clipboard.GetText(); }
                 catch (Exception err)
-                { MessageBox.Show(err.ToString()); }
+                { Loger.str(err.ToString(), true); }
             }
             return str.Trim().Replace("  ", "");
         }
-        private async void TansResultProcessing(string str)
+        private string AddSpacesBeforeCapitalLetters(string str)
+        {
+            str = Regex.Replace(str, "([a-z])([A-Z](?=[A-Z])[a-z]*)", "$1 $2");
+            str = Regex.Replace(str, "([A-Z])([A-Z][a-z])", "$1 $2");
+            str = Regex.Replace(str, "([a-z])([A-Z][a-z])", "$1 $2");
+            str = Regex.Replace(str, "([a-z])([A-Z][a-z])", "$1 $2");
+            return str;
+        }
+        private async void TranslationResultDisplay(string str)
         {
             try
             {
-
                 await Task.Run(() =>
                 {
                     var translator = new Translator();
@@ -108,34 +116,35 @@ namespace QTranser
                     // 将翻译结果写入 transResult.json 文件
                     Loger.json(transResult);
 
-                    string resultStr = transResult?.translation?[0] + Environment.NewLine;
+                    string detailsStr = transResult?.translation?[0] + Environment.NewLine;
 
                     if (transResult?.basic != null)
                     {
-                        resultStr += "----------------" + Environment.NewLine;
+                        detailsStr += "----------------" + Environment.NewLine;
                         foreach (var strr in transResult?.basic?.explains)
                         {
-                            resultStr += strr + Environment.NewLine;
+                            detailsStr += strr + Environment.NewLine;
                         }
                     }
 
                     if (transResult?.web != null)
                     {
-                        resultStr += "----------------" + Environment.NewLine;
+                        detailsStr += "----------------" + Environment.NewLine;
                         foreach (var element in transResult.web)
                         {
-                            resultStr += element.key + Environment.NewLine;
+                            detailsStr += element.key + Environment.NewLine;
                             if (element?.value != null)
                             {
                                 foreach (var strr in element.value)
                                 {
-                                    resultStr += "  " + strr + Environment.NewLine;
+                                    detailsStr += "  " + strr + Environment.NewLine;
                                 }
                             }
                         }
                     }
-                    Mvvm.StrQ = transResult?.translation?[0];
-                    Mvvm.StrO = resultStr.Substring(0, resultStr.Length - 2);
+                    string s = transResult?.translation?[0];
+                    Mvvm.StrQ = s.Replace("\n"," ");
+                    Mvvm.StrO = detailsStr.Substring(0, detailsStr.Length - 2);
                 });
             }
             catch (WebException)
@@ -226,9 +235,6 @@ namespace QTranser
                 Process.Start("http://google.com#q=" + str);
             }
         }
-      
-
-
 
         private void ShowQShower_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -261,6 +267,9 @@ namespace QTranser
                 }
                 _shower.Visibility = Visibility.Visible;
                 _shower.Topmost = true;
+                _shower.Activate();
+                _shower.StrIBox.Focus();
+                _shower.StrIBox.SelectionStart = _shower.StrIBox.Text.Length;
                
             }
         }
@@ -272,6 +281,31 @@ namespace QTranser
             _foregroundWindow.SetForeground("Shell_TrayWnd");
             textBox.Focus();
             textBox.SelectionStart = textBox.Text.Length;
+        }
+
+        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            inputStrProsessing(sender, e);
+        }
+
+        public static void inputStrProsessing(object sender, KeyEventArgs e)
+        {
+            string str = ((TextBox)sender).Text;
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.L)
+            {
+                ((TextBox)sender).Clear();
+            }
+            if (e.Key == Key.Enter)
+            {
+                if (str.EndsWith("/") || str.EndsWith("?"))
+                {
+                    Process.Start("https://www.baidu.com/s?ie=UTF-8&wd=" + str);
+                }
+                else
+                {
+                    Clipboard.SetText(str);
+                }
+            }
         }
     }
 }

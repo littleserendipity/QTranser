@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
@@ -52,11 +54,39 @@ namespace QTranser.QTranseLib
             NativeMethods.RemoveClipboardFormatListener(Handle);
         }
 
+
+        // 防止截切版被多次调用
+        private int _i = 0;
+        private int i
+        {
+            get
+            {
+                async void setI()
+                {
+                    await Task.Run(() =>
+                    {
+                        Thread.Sleep(20);
+                        i = 0;
+                    }
+                    );
+                }
+                setI();
+                return _i;
+            }
+            set
+            {
+                _i = value;
+            }
+        }
         private IntPtr HwndHandler(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)
         {
             if (msg == WM_CLIPBOARDUPDATE)
             {
-                this.ClipboardUpdate?.Invoke(this, new EventArgs());
+                if(i<1)
+                {
+                    this.ClipboardUpdate?.Invoke(this, new EventArgs());
+                    i++;
+                }
             }
             handled = false;
             return IntPtr.Zero;

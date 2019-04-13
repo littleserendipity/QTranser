@@ -1,6 +1,7 @@
 ﻿using HotKeyEditor;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,21 +38,38 @@ namespace QTranser
         {
             //后台代码动态修改控件模板属性 参考链接：https://www.itsvse.com/thread-2740-1-1.html
             Border border = (Border)((Button)sender).Template.FindName("Border", (Button)sender);
+            TextBlock textBlock = (TextBlock)((Button)sender).Template.FindName("topPrompt", (Button)sender);
             if (IsTop)
             {
                 border.Background = new SolidColorBrush(Color.FromArgb(50, 0, 0, 0));
                 this.Deactivated -= Window_Deactivated;
+                textBlock.Text = " 取消置顶";
                 IsTop = false;
+
             }
             else
             {
                 border.Background = Brushes.Transparent;
                 this.Deactivated += Window_Deactivated;
+                textBlock.Text = " 置顶";
                 IsTop = true;
             }
-
-
           
+        }
+
+        private void StrIBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            QTranse.inputStrProsessing(sender, e);
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Clipboard.SetText(((TextBlock)sender).Text);
+        }
+
+        private void TextBlock_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            QTranse.Mvvm.HistoryWord.RemoveAt(HistoryList.SelectedIndex);
         }
     }
 }

@@ -8,15 +8,34 @@
         Width="270"
         Background="{Binding LogoColor}"
         ShowInTaskbar="False"
-        ResizeMode="NoResize"  Deactivated="Window_Deactivated">
+        ResizeMode="NoResize"  
+        Deactivated="Window_Deactivated">
     <WindowChrome.WindowChrome>
         <WindowChrome
             CaptionHeight="13"
             CornerRadius="11,11,0,0"
             GlassFrameThickness="0"/>
     </WindowChrome.WindowChrome>
-
     <Window.Resources>
+
+        <Style x:Key="HotKeyStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinLines" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="CaretBrush" Value="Transparent"/>
+            <Setter Property="SelectionBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Foreground" Value="LightGray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <Style TargetType="{x:Type TabItem}">
             <Setter Property="Foreground" Value="Gray"/>
             <Setter Property="FontSize" Value="17"/>
@@ -26,7 +45,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TabItem}">
                         <DockPanel >
-                                <ContentPresenter ContentSource="Header" />
+                            <ContentPresenter ContentSource="Header" />
                         </DockPanel>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
@@ -44,18 +63,42 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type Button}">
-            <Border x:Name="Border"  CornerRadius="2" Background="Transparent" Cursor="Hand"
+            <StackPanel Orientation="Horizontal" Margin="0,0,-46,0">
+                <Border x:Name="Border"  CornerRadius="2" Background="Transparent" Cursor="Hand"
                     Height="18" Width="18">
-                <Path Data="M479.075523 711.254681c0 70.2291 0.083871 114.20878 0.218064 140.734974l-148.360914 106.16768 0 65.842665c0 0 137.164181-31.552144 156.372659-56.247861 19.212672-24.685233 1.369189 45.264997 24.691523 45.264997 23.324432 0 5.476754-69.95023 24.695717-45.264997 19.206382 24.695717 156.372659 56.247861 156.372659 56.247861l0-65.842665-148.375592-106.16768c0.14258-26.526194 0.226451-70.505874 0.226451-140.734974 0-283.942036 460.894459 0 460.894459 0l0-79.555518-115.225712-85.227272 0-65.662343c0-9.083193-13.343823-16.461715-24.685233-16.461715-11.351894 0-24.695717 7.378522-24.695717 16.461715l0 29.119895-85.724206-63.422996c0-178.315322-28.115543-160.490709-28.115543-160.490709s-21.938469 15.094623-24.685233 100.128992c-1.645962 51.108686-52.339488 15.51817-92.547084-21.017988l-22.569596-104.490267-26.182325-14.138497c0-35.590516 0-81.312609 0-129.18179C561.379902 13.064953 511.307019 0 511.307019 0s-48.693211 13.054469-48.693211 117.311994c0 47.240151 0 92.396117 0 127.766473l-28.803283 14.329303-23.194432 106.176067 0.016774 0c3.310794-1.945799 6.558686-4.151598 9.735287-6.470622-3.159827 2.966925-6.407719 5.938043-9.735287 8.919645-39.630985 35.456323-87.693069 67.884915-89.311773 18.12445-2.748861-85.051143-24.691523-100.128992-24.691523-100.128992s-28.115543-17.824613-28.115543 160.490709l-85.724206 63.406222 0-29.119895c0-9.083193-13.335436-16.461715-24.691523-16.461715s-24.691523 7.378522-24.691523 16.461715l0 65.662343L18.187353 631.697066l0 79.555518C18.187353 711.254681 479.075523 427.310549 479.075523 711.254681z" 
+                    <Path Data="M479.075523 711.254681c0 70.2291 0.083871 114.20878 0.218064 140.734974l-148.360914 106.16768 0 65.842665c0 0 137.164181-31.552144 156.372659-56.247861 19.212672-24.685233 1.369189 45.264997 24.691523 45.264997 23.324432 0 5.476754-69.95023 24.695717-45.264997 19.206382 24.695717 156.372659 56.247861 156.372659 56.247861l0-65.842665-148.375592-106.16768c0.14258-26.526194 0.226451-70.505874 0.226451-140.734974 0-283.942036 460.894459 0 460.894459 0l0-79.555518-115.225712-85.227272 0-65.662343c0-9.083193-13.343823-16.461715-24.685233-16.461715-11.351894 0-24.695717 7.378522-24.695717 16.461715l0 29.119895-85.724206-63.422996c0-178.315322-28.115543-160.490709-28.115543-160.490709s-21.938469 15.094623-24.685233 100.128992c-1.645962 51.108686-52.339488 15.51817-92.547084-21.017988l-22.569596-104.490267-26.182325-14.138497c0-35.590516 0-81.312609 0-129.18179C561.379902 13.064953 511.307019 0 511.307019 0s-48.693211 13.054469-48.693211 117.311994c0 47.240151 0 92.396117 0 127.766473l-28.803283 14.329303-23.194432 106.176067 0.016774 0c3.310794-1.945799 6.558686-4.151598 9.735287-6.470622-3.159827 2.966925-6.407719 5.938043-9.735287 8.919645-39.630985 35.456323-87.693069 67.884915-89.311773 18.12445-2.748861-85.051143-24.691523-100.128992-24.691523-100.128992s-28.115543-17.824613-28.115543 160.490709l-85.724206 63.406222 0-29.119895c0-9.083193-13.335436-16.461715-24.691523-16.461715s-24.691523 7.378522-24.691523 16.461715l0 65.662343L18.187353 631.697066l0 79.555518C18.187353 711.254681 479.075523 427.310549 479.075523 711.254681z" 
                       x:Name="Pather"    
                       Fill="Gray" 
                       Stretch="Fill"
                       Height="12" Width="12" HorizontalAlignment="Center" 
                       WindowChrome.IsHitTestVisibleInChrome="True" />
-            </Border>
+
+                </Border>
+                <TextBlock x:Name="topPrompt" Opacity="0" Text=" 置顶" VerticalAlignment="Center" Foreground="Gray" FontSize="11"></TextBlock>
+            </StackPanel>
             <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="topPrompt" Storyboard.TargetProperty="Opacity"
+                                                 To="1" Duration="0:0:0.5"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="topPrompt" Storyboard.TargetProperty="Opacity"
+                                                 To="0" Duration="0:0:0.5"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="Pather" Property="Fill" Value="LightGray"/>
                 </Trigger>
@@ -67,11 +110,38 @@
 
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Control.Template" Value="{StaticResource ButtonTemplate}">
-                
+
             </Setter>
         </Style>
 
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Height" Value="18"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
 
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="LightGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="HistoryItemTemplate">
+            <TextBlock 
+                Text="{Binding Path=Word}" 
+                MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"  
+                MouseRightButtonUp="TextBlock_MouseRightButtonUp"
+                />
+        </DataTemplate>
     </Window.Resources>
 
     <StackPanel Background="#4C000000">
@@ -91,17 +161,20 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBox Text="{Binding StrI}" 
-                                 ContextMenu="{x:Null}"
-                                 Grid.Row="0"
-                                 MaxLines="3"
-                                 FontSize="14"
-                                 TextWrapping="Wrap"
-                                 Background="Transparent" 
-                                 Foreground="White"
-                                 CaretBrush="LightBlue"
-                               
-                                 BorderThickness="2 0 0 0"/>
+                        <TextBox 
+                            x:Name="StrIBox"
+                            Text="{Binding StrI}" 
+                            ContextMenu="{x:Null}"
+                            Grid.Row="0"
+                            MaxLines="3"
+                            FontSize="14"
+                            TextWrapping="Wrap"
+                            Background="Transparent" 
+                            Foreground="White"
+                            CaretBrush="LightBlue"
+                            BorderThickness="2 0 0 0" KeyUp="StrIBox_KeyUp"
+                            
+                            />
                         <Border
                             Grid.Row="1"
                             Margin="0 11"
@@ -117,8 +190,14 @@
                                      VerticalContentAlignment="Center" />
                         </Border>
                     </Grid>
-                    <ListBox x:Name="HistoryList" ItemsSource="{Binding HistoryWord}">
-                        
+                    <ListBox x:Name="HistoryList" ItemsSource="{Binding HistoryWord}"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Padding="5" 
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                             ItemTemplate="{StaticResource HistoryItemTemplate}"
+                             >
                     </ListBox>
                 </StackPanel>
             </TabItem>
@@ -127,26 +206,8 @@
             </TabItem>
             <TabItem Header="&gt;&gt;" Margin="0,0,-50,0" HorizontalAlignment="Right">
                 <StackPanel >
-                    <StackPanel.Resources>
-                        <Style x:Key="HotKeyStyle" TargetType="{x:Type TextBox}">
-                            <Setter Property="Margin" Value="5"/>
-                            <Setter Property="MinLines" Value="2"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="FontSize" Value="14"/>
-                            <Setter Property="Foreground" Value="Gray"/>
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                            <Setter Property="CaretBrush" Value="Transparent"/>
-                            <Setter Property="SelectionBrush" Value="Transparent"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsFocused" Value="True">
-                                    <Setter Property="Foreground" Value="LightGray"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </StackPanel.Resources>
-                    <TextBlock Text="          鼠标点击高亮后&#x000A;直接在键盘上输入新的快捷键" FontSize="12" 
+                    <TextBlock Text="          鼠标点击高亮后&#x000A;直接在键盘上输入新的快捷键" 
+                               FontSize="12" 
                                HorizontalAlignment="Center"
                                Foreground="Gray"
                                Margin="14"

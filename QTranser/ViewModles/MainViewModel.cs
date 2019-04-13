@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -49,7 +50,7 @@ namespace QTranser.ViewModles
             }
         }
 
-        public ObservableCollection<string> HistoryWord { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<HistoryWord> HistoryWord { get; set; } = new ObservableCollection<HistoryWord>();
 
         private string _hotKeyQ;
         public string HotKeyQ
@@ -91,7 +92,7 @@ namespace QTranser.ViewModles
             set
             {
                 if (value == _hotKeyG) return;
-                _hotKeyG = value; 
+                _hotKeyG = value;
                 OnPropertyChanged();
             }
         }
@@ -107,7 +108,7 @@ namespace QTranser.ViewModles
                 OnPropertyChanged();
             }
         }
-
-
     }
+
+
 }

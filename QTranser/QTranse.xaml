@@ -25,8 +25,8 @@
             FontSize="14"
             MinWidth="17" 
             CaretBrush="Gray" 
-            TextWrapping="NoWrap"
             MaxLines="1"
+            KeyUp="TextBox_KeyUp"
             />
         <Rectangle 
             Fill="{Binding LogoColor}"

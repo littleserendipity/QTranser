@@ -13,12 +13,13 @@ namespace QTranser.QTranseLib
     /// </summary>
     public class SysColorChanger
     {
-        private const int WM_SYSCOLORCHANGE = 0015;
+        //Windows 常用消息大全 https://blog.csdn.net/zhangguofu2/article/details/19236081
+        private const int WM_PAINTICON = 26;
 
         private IntPtr Handle;
 
         /// <summary>
-        /// Event for clipboard update notification.
+        /// Event for SysColor update notification.
         /// </summary>
         public event Action SysColorChange;
 
@@ -39,7 +40,7 @@ namespace QTranser.QTranseLib
 
         private IntPtr HwndHandler(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)
         {
-            if (msg == WM_SYSCOLORCHANGE)
+            if (msg == WM_PAINTICON)
             {
                 this.SysColorChange?.Invoke();
             }
