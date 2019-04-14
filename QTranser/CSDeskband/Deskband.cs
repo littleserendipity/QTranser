@@ -15,15 +15,23 @@ namespace QTranser
     [CSDeskBandRegistration(Name = "Qtranser")]
     public class Deskband : CSDeskBandWpf
     {
+        public static Edge edge { get; set; }
+
         public Deskband()
         {
             Options.ContextMenuItems = ContextMenuItems;
             Options.MinHorizontalSize.Width = 170;
-            QTranse.edge = TaskbarInfo.Edge;
-            TaskbarInfo.TaskbarEdgeChanged += (sender, e) => QTranse.edge = e.Edge;
+            edge = TaskbarInfo.Edge;
+            TaskbarInfo.TaskbarEdgeChanged += (sender, e) => edge = e.Edge;
         }
 
         protected override UIElement UIElement => new QTranse();
+
+        protected override void DeskbandOnClosed()
+        {
+            QTranse.HotKeyManage.Dispose();
+            QTranse.Shower.Close();
+        }
 
         private List<DeskBandMenuItem> ContextMenuItems
         {

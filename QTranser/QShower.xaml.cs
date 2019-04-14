@@ -1,7 +1,9 @@
-﻿using HotKeyEditor;
+﻿using CSDeskBand;
+using HotKeyEditor;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +30,74 @@ namespace QTranser
             DataContext = QTranse.Mvvm;
             this.Height = SystemParameters.WorkArea.Height / 2;
         }
+
+        public void ShowOrHide(double actualHeight, double actualWidth, double pointToScreen)
+        {
+            try
+            {
+
+  
+            if (this.IsVisible)
+            {
+                this.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                if (Deskband.edge == Edge.Top)
+                {
+                    this.Left = pointToScreen + actualWidth - this.Width;
+                    this.Top = actualHeight;
+                }
+                if (Deskband.edge == Edge.Bottom)
+                {
+                        
+                    this.Left = pointToScreen + actualWidth - this.Width;
+                    this.Top = SystemParameters.WorkArea.Height - this.Height;
+                }
+                if (Deskband.edge == Edge.Left)
+                {
+                    this.Left = actualWidth;
+                    this.Top = SystemParameters.WorkArea.Height - this.Height;
+                }
+                if (Deskband.edge == Edge.Right)
+                {
+                    this.Left = SystemParameters.WorkArea.Width - this.Width;
+                    this.Top = SystemParameters.WorkArea.Height - this.Height;
+                }
+                this.Visibility = Visibility.Visible;
+                this.Topmost = true;
+                this.Activate();
+                this.StrIBox.Focus();
+                this.StrIBox.SelectionStart = this.StrIBox.Text.Length;
+            }
+
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+        }
+
+        public void inputStrProsessing(object sender, KeyEventArgs e)
+        {
+            string str = ((TextBox)sender).Text;
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.L)
+            {
+                ((TextBox)sender).Clear();
+            }
+            if (e.Key == Key.Enter)
+            {
+                if (str.EndsWith("/") || str.EndsWith("?"))
+                {
+                    Process.Start("https://www.baidu.com/s?ie=UTF-8&wd=" + str);
+                }
+                else
+                {
+                    Clipboard.SetText(str);
+                }
+            }
+        }
+
         private void Window_Deactivated(object sender, EventArgs e)
         {
             this.Visibility = Visibility.Hidden;
@@ -59,7 +129,7 @@ namespace QTranser
 
         private void StrIBox_KeyUp(object sender, KeyEventArgs e)
         {
-            QTranse.inputStrProsessing(sender, e);
+            inputStrProsessing(sender, e);
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -71,5 +141,7 @@ namespace QTranser
         {
             QTranse.Mvvm.HistoryWord.RemoveAt(HistoryList.SelectedIndex);
         }
+
+
     }
 }

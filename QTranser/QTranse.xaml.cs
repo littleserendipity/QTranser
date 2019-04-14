@@ -35,13 +35,12 @@ namespace QTranser
     /// </summary>
     public partial class QTranse : UserControl
     {
-        public static Edge edge { get; set; }
-        public static MainViewModel Mvvm { get; set; } = new MainViewModel();
         public static HotKeyManager HotKeyManage;
+        public static MainViewModel Mvvm { get; set; } = new MainViewModel();
+        public static QShower Shower { get; set; }
 
         private ClipboardMonitor _clipboardMonitor;
         private InputSimulator _sim { get; set; } = new InputSimulator();
-        private QShower _shower { get; set; } = new QShower();
         private ForegroundWindow _foregroundWindow { get; set; } = new ForegroundWindow();
 
         public QTranse()
@@ -52,20 +51,32 @@ namespace QTranser
 
         private void QTranser_Loaded(object sender, RoutedEventArgs e)
         {
-            _clipboardMonitor = new ClipboardMonitor(this);
-            _clipboardMonitor.ClipboardUpdate += OnClipboardUpdate;
+            try
+            {
+                _clipboardMonitor = new ClipboardMonitor(this);
+                _clipboardMonitor.ClipboardUpdate += OnClipboardUpdate;
 
-            HotKeyManage = new HotKeyManager(this);
-            HotKeyManage.KeyPressed += OnHotKeyPressed;
-            RegisterHotKey();
+                HotKeyManage = new HotKeyManager(this);
+                HotKeyManage.KeyPressed += OnHotKeyPressed;
+                RegisterHotKey();
+                
+                var SysColor = new SysColorChanger(this);
+                SysColor.SysColorChange += () => Mvvm.LogoColor = SystemParameters.WindowGlassBrush;
 
-            var SysColor = new SysColorChanger(this);
-            SysColor.SysColorChange += () => Mvvm.LogoColor = SystemParameters.WindowGlassBrush;
+                // 必须在此处初始化，否则关闭QTranser后再次打开，就不会被初始化
+                // 那么_shower的各种方法也就没办法被调用，要是调用了就会引发异常，空值当然会引发异常了。
+                Shower = new QShower();
 
-            ShowQShower_MouseLeftButtonDown(null, null);
+                Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+
         }
 
-        private void OnClipboardUpdate(object sender, EventArgs e)
+        private async void OnClipboardUpdate(object sender, EventArgs e)
         {
             string str = ClipboardGetText();
             if (str == "") return;
@@ -73,13 +84,13 @@ namespace QTranser
 
             Mvvm.StrQ = "...";
             Mvvm.StrI = "...";
-            TranslationResultDisplay(str);
+            string sss = await Task.Run(()=> TranslationResultDisplay(str));
 
             bool isRepeat = Mvvm.HistoryWord.Any<HistoryWord>(o => o.Word.Trim().ToLower() == str.Trim().ToLower());
             if(isRepeat) return;
             else
             {
-                Mvvm.HistoryWord.Insert(0, new HistoryWord() { Word = str });
+                Mvvm.HistoryWord.Insert(0, new HistoryWord() { Word = str ,Translate = sss});
             }
 
             if (Mvvm.HistoryWord.Count > 12) Mvvm.HistoryWord.RemoveAt(12);
@@ -103,12 +114,12 @@ namespace QTranser
             str = Regex.Replace(str, "([a-z])([A-Z][a-z])", "$1 $2");
             return str;
         }
-        private async void TranslationResultDisplay(string str)
+        private /*async*/ string TranslationResultDisplay(string str)
         {
-            try
-            {
-                await Task.Run(() =>
-                {
+            //try
+            //{
+                //await Task.Run(() =>
+                //{
                     var translator = new Translator();
                     string transResultJson = translator.dao(str);
                     dynamic transResult = JToken.Parse(transResultJson) as dynamic;
@@ -143,20 +154,22 @@ namespace QTranser
                         }
                     }
                     string s = transResult?.translation?[0];
+                    string z = detailsStr.Substring(0, detailsStr.Length - 2);
                     Mvvm.StrQ = s.Replace("\n"," ");
-                    Mvvm.StrO = detailsStr.Substring(0, detailsStr.Length - 2);
-                });
-            }
-            catch (WebException)
-            {
-                Mvvm.StrQ = "哎呦~无法连接网络...";
-                Mvvm.StrI = "哎呦~无法连接网络...";
-                Mvvm.StrO = "Ouch ~ can't connect to Internet...";
-            }
-            catch (Exception err)
-            {
-                Loger.str(err.ToString());
-            }
+                    Mvvm.StrO = z;
+                    return z;
+                //});
+            //}
+            //catch (WebException)
+            //{
+            //    Mvvm.StrQ = "哎呦~无法连接网络...";
+            //    Mvvm.StrI = "哎呦~无法连接网络...";
+            //    Mvvm.StrO = "Ouch ~ can't connect to Internet...";
+            //}
+            //catch (Exception err)
+            //{
+            //    Loger.str(err.ToString());
+            //}
         }
         
         private void RegisterHotKey()
@@ -218,7 +231,7 @@ namespace QTranser
             }
             if(e.HotKey.Key == HotKeyEditor.HotKey.hotKeyW)
             {
-                ShowQShower_MouseLeftButtonDown(null, null);
+                Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);
             }
             if (e.HotKey.Key == HotKeyEditor.HotKey.hotKeyB)
             {
@@ -236,44 +249,6 @@ namespace QTranser
             }
         }
 
-        private void ShowQShower_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (_shower.IsVisible )
-            {
-                _shower.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-               
-                if (edge == Edge.Top)
-                {
-                    _shower.Left = PointToScreen(new Point()).X + this.ActualWidth - _shower.Width;
-                    _shower.Top = this.ActualHeight;
-                }
-                if (edge == Edge.Bottom)
-                {
-                    _shower.Left = PointToScreen(new Point()).X + this.ActualWidth - _shower.Width;
-                    _shower.Top = SystemParameters.WorkArea.Height - _shower.Height;
-                }
-                if (edge == Edge.Left)
-                {
-                    _shower.Left = this.ActualWidth;
-                    _shower.Top = SystemParameters.WorkArea.Height - _shower.Height;
-                }
-                if (edge == Edge.Right)
-                {
-                    _shower.Left = SystemParameters.WorkArea.Width - _shower.Width;
-                    _shower.Top = SystemParameters.WorkArea.Height - _shower.Height;
-                }
-                _shower.Visibility = Visibility.Visible;
-                _shower.Topmost = true;
-                _shower.Activate();
-                _shower.StrIBox.Focus();
-                _shower.StrIBox.SelectionStart = _shower.StrIBox.Text.Length;
-               
-            }
-        }
-
         private void Rectangle_MouseEnter(object sender, MouseEventArgs e)
         {
             // 必须借助真实鼠标/键盘按键 SetForeground函数 才能抢到焦点。
@@ -285,27 +260,12 @@ namespace QTranser
 
         private void TextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            inputStrProsessing(sender, e);
+            Shower.inputStrProsessing(sender, e);
         }
 
-        public static void inputStrProsessing(object sender, KeyEventArgs e)
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string str = ((TextBox)sender).Text;
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.L)
-            {
-                ((TextBox)sender).Clear();
-            }
-            if (e.Key == Key.Enter)
-            {
-                if (str.EndsWith("/") || str.EndsWith("?"))
-                {
-                    Process.Start("https://www.baidu.com/s?ie=UTF-8&wd=" + str);
-                }
-                else
-                {
-                    Clipboard.SetText(str);
-                }
-            }
+            Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);
         }
     }
 }

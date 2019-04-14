@@ -17,5 +17,15 @@ namespace QTranser
                 _word = value;
             }
         }
+        private string _translate;
+        public string Translate
+        {
+            get { return _translate; }
+            set
+            {
+                _translate = value;
+            }
+        }
+        
     }
 }

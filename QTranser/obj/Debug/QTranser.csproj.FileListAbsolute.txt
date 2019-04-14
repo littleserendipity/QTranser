@@ -16,7 +16,6 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\installer.
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\Uninstall.bat
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranse.g.cs
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranse.baml
-C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranser.csprojAssemblyReference.cache
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\Newtonsoft.Json.xml
@@ -26,4 +25,4 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\WindowsInput.xml
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QShower.g.cs
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QShower.baml
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\Themes\QShowerStyle.baml
+C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranser.csprojAssemblyReference.cache

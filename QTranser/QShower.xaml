@@ -65,6 +65,7 @@
         </Style>
 
         <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type Button}">
+            
             <StackPanel Orientation="Horizontal" Margin="0,0,-46,0">
                 <Border x:Name="Border"  CornerRadius="2" Background="Transparent" Cursor="Hand"
                     Height="18" Width="18">
@@ -74,7 +75,6 @@
                       Stretch="Fill"
                       Height="12" Width="12" HorizontalAlignment="Center" 
                       WindowChrome.IsHitTestVisibleInChrome="True" />
-
                 </Border>
                 <TextBlock x:Name="topPrompt" Opacity="0" Text=" 置顶" VerticalAlignment="Center" Foreground="Gray" FontSize="11"></TextBlock>
             </StackPanel>
@@ -106,13 +106,8 @@
                     <Setter TargetName="Pather" Property="Fill" Value="White"/>
                 </Trigger>
             </ControlTemplate.Triggers>
+            
         </ControlTemplate>
-
-        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Control.Template" Value="{StaticResource ButtonTemplate}">
-
-            </Setter>
-        </Style>
 
         <Style TargetType="{x:Type ListBoxItem}">
             <Setter Property="Foreground" Value="Gray"/>
@@ -143,17 +138,17 @@
                 />
         </DataTemplate>
     </Window.Resources>
-
+<!--以上是Window资源-->
     <StackPanel Background="#4C000000">
         <Button 
+            Click="Button_Click" 
+            Style="{Binding ButtonStyle}"
+            Template="{StaticResource ButtonTemplate}"
             WindowChrome.IsHitTestVisibleInChrome="True" 
-                Template="{StaticResource ButtonTemplate}"
-                Margin="189,0,57,0"
-                Click="Button_Click" 
-                Background="Pink" Height="21"/>
-        <TabControl 
-            Margin="7 0"
-            Background="Transparent" BorderThickness="0" >
+            Margin="189,0,57,0"
+            Height="21"
+            />
+        <TabControl Margin="7 0" Background="Transparent" BorderThickness="0" >
             <TabItem Header="QTranser">
                 <StackPanel Margin="5 11">
                     <Grid Height="170" >
@@ -172,13 +167,15 @@
                             Background="Transparent" 
                             Foreground="White"
                             CaretBrush="LightBlue"
-                            BorderThickness="2 0 0 0" KeyUp="StrIBox_KeyUp"
-                            
+                            BorderThickness="2 0 0 0" 
+                            KeyUp="StrIBox_KeyUp"
                             />
                         <Border
                             Grid.Row="1"
                             Margin="0 11"
-                            CornerRadius="4" Background="#35000000" >
+                            CornerRadius="4" 
+                            Padding="3"
+                            Background="#35000000" >
                             <TextBox Text="{Binding StrO}" 
                                      ContextMenu="{x:Null}"
                                      FontSize="14"
@@ -190,28 +187,110 @@
                                      VerticalContentAlignment="Center" />
                         </Border>
                     </Grid>
-                    <ListBox x:Name="HistoryList" ItemsSource="{Binding HistoryWord}"
+                    <ListBox x:Name="HistoryList" 
+                             ItemsSource="{Binding HistoryWord}"
+                             ItemTemplate="{StaticResource HistoryItemTemplate}"
                              Background="Transparent"
                              BorderThickness="0"
                              Padding="5" 
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                             ItemTemplate="{StaticResource HistoryItemTemplate}"
                              >
                     </ListBox>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="   History">
-                <StackPanel />
+            <TabItem Header="History" Margin="15,0,-18,0" >
+                <StackPanel>
+                    <StackPanel.Resources>
+
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Margin="3">
+                                            <ContentPresenter 
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#35000000" />
+                                    <Setter Property="Foreground" Value="LightGray" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#35000000" />
+                                    <Setter Property="Foreground" Value="LightGray" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <!--开始工作-->
+                        <DataTemplate x:Key="HistoryListBoxItmesTemplate">
+                            <StackPanel Margin="3" >
+                                <TextBlock 
+                                    Text="{Binding Path=Word}" 
+                                    MaxWidth="210"
+                                    Padding="3 0"
+                                    FontSize="14"
+                                    Foreground="Gray"/>
+                                <StackPanel>
+
+                                    <StackPanel.Style>
+                                        <Style>
+                                            <Style.Triggers>
+                                                <DataTrigger 
+                                                    Value="False"
+                                                    Binding="{Binding RelativeSource={
+                                                        RelativeSource
+                                                        Mode=FindAncestor,
+                                                        AncestorType={x:Type ListBoxItem}
+                                                    },  Path=IsSelected}">
+                                                    <Setter Property="StackPanel.Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+
+                                    <TextBlock 
+                                        Text="{Binding Path=Translate}"
+                                        MaxWidth="210"
+                                        Padding="10 0"
+                                        TextWrapping="Wrap"
+                                        Foreground="LightGray"
+                                        FontSize="13"
+                                        HorizontalAlignment="Left"
+                                        FontWeight="Regular"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </StackPanel.Resources>
+                    <!--中间工作-->
+                    <ListBox 
+                        x:Name="HistoryListBox" Background="Transparent" BorderThickness="0"
+                        ItemsSource="{Binding HistoryWord}"
+                        ItemTemplate="{StaticResource HistoryListBoxItmesTemplate}"
+                        Margin="10"
+                        MaxHeight="510" 
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    </ListBox>
+                    
+                    <!--结束工作-->
+                </StackPanel>
             </TabItem>
-            <TabItem Header="&gt;&gt;" Margin="0,0,-50,0" HorizontalAlignment="Right">
+            
+            
+            <TabItem Header="&gt;&gt;" Margin="0,0,-59,0" HorizontalAlignment="Right">
                 <StackPanel >
                     <TextBlock Text="          鼠标点击高亮后&#x000A;直接在键盘上输入新的快捷键" 
                                FontSize="12" 
                                HorizontalAlignment="Center"
                                Foreground="Gray"
-                               Margin="14"
-                               />
+                               Margin="14"/>
                     <TextBox x:Name="HotKeyQ" Text="{Binding HotKeyQ}" Style="{StaticResource HotKeyStyle}" ContextMenu="{x:Null}" hotKey:HotKeyHelper.IsHotKeyEditor="True"></TextBox>
                     <TextBox x:Name="HotKeyW" Text="{Binding HotKeyW}" Style="{StaticResource HotKeyStyle}" ContextMenu="{x:Null}" hotKey:HotKeyHelper.IsHotKeyEditor="True"></TextBox>
                     <TextBox x:Name="HotKeyB" Text="{Binding HotKeyB}" Style="{StaticResource HotKeyStyle}" ContextMenu="{x:Null}" hotKey:HotKeyHelper.IsHotKeyEditor="True"></TextBox>
