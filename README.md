@@ -1,6 +1,8 @@
 # QTranser
 一款简单的翻译软件（非常方便使用）
 
+下载安装包 ![QTranser](https://raw.githubusercontent.com/xyfll7/QTranser/master/QTranserInstaller/Debug/QTranserInstaller.msi) 
+
 ## 厉害的Ctrl+C 
 您只需要按下Ctrl+C将文字复制进剪切板：
 
