@@ -15,14 +15,14 @@ namespace QTranser
     [CSDeskBandRegistration(Name = "Qtranser",ShowDeskBand = true)]
     public class Deskband : CSDeskBandWpf
     {
-        public static Edge edge { get; set; }
+        public static Edge Edger { get; set; }
 
         public Deskband()
         {
             Options.ContextMenuItems = ContextMenuItems;
             Options.MinHorizontalSize.Width = 170;
-            edge = TaskbarInfo.Edge;
-            TaskbarInfo.TaskbarEdgeChanged += (sender, e) => edge = e.Edge;
+            Edger = TaskbarInfo.Edge;
+            TaskbarInfo.TaskbarEdgeChanged += (sender, e) => Edger = e.Edge;
         }
 
         protected override UIElement UIElement => new QTranse();

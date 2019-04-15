@@ -41,8 +41,8 @@ namespace QTranser
         public static QShower Shower { get; set; }
 
         private ClipboardMonitor _clipboardMonitor;
-        private InputSimulator _sim { get; set; } = new InputSimulator();
-        private ForegroundWindow _foregroundWindow { get; set; } = new ForegroundWindow();
+        private InputSimulator Sim { get; set; } = new InputSimulator();
+        private ForegroundWindow ForegroundW { get; set; } = new ForegroundWindow();
 
         public QTranse()
         {
@@ -218,7 +218,7 @@ namespace QTranser
         {
             if (e.HotKey.Key == HotKeyEditor.HotKey.hotKeyQ)
             {
-                _foregroundWindow.SetForeground("Shell_TrayWnd");
+                ForegroundW.SetForeground("Shell_TrayWnd");
                 textBox.Focus();
                 textBox.Clear();
             }
@@ -228,14 +228,14 @@ namespace QTranser
             }
             if (e.HotKey.Key == HotKeyEditor.HotKey.hotKeyB)
             {
-                _sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_C);
+                Sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_C);
                 Thread.Sleep(20);
                 string str = ClipboardGetText();
                 Process.Start("https://www.baidu.com/s?ie=UTF-8&wd=" + str);
             }
             if (e.HotKey.Key == HotKeyEditor.HotKey.hotKeyG)
             {
-                _sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_C);
+                Sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_C);
                 Thread.Sleep(20);
                 string str = ClipboardGetText();
                 Process.Start("http://google.com#q=" + str);
@@ -245,15 +245,15 @@ namespace QTranser
         private void Rectangle_MouseEnter(object sender, MouseEventArgs e)
         {
             // 必须借助真实鼠标/键盘按键 SetForeground函数 才能抢到焦点。
-            _sim.Mouse.Keyboard.KeyUp(VirtualKeyCode.RIGHT);
-            _foregroundWindow.SetForeground("Shell_TrayWnd");
+            Sim.Mouse.Keyboard.KeyUp(VirtualKeyCode.RIGHT);
+            ForegroundW.SetForeground("Shell_TrayWnd");
             textBox.Focus();
             textBox.SelectionStart = textBox.Text.Length;
         }
 
         private void TextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            Shower.inputStrProsessing(sender, e);
+            Shower.InputStrProsessing(sender, e);
         }
 
         private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -168,6 +168,7 @@
     <Content Include="tools\RegAsm.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="tools\translate.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="image\" />

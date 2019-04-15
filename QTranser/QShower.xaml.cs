@@ -43,23 +43,23 @@ namespace QTranser
             }
             else
             {
-                if (Deskband.edge == Edge.Top)
+                if (Deskband.Edger == Edge.Top)
                 {
                     this.Left = pointToScreen + actualWidth - this.Width;
                     this.Top = actualHeight;
                 }
-                if (Deskband.edge == Edge.Bottom)
+                if (Deskband.Edger == Edge.Bottom)
                 {
                         
                     this.Left = pointToScreen + actualWidth - this.Width;
                     this.Top = SystemParameters.WorkArea.Height - this.Height;
                 }
-                if (Deskband.edge == Edge.Left)
+                if (Deskband.Edger == Edge.Left)
                 {
                     this.Left = actualWidth;
                     this.Top = SystemParameters.WorkArea.Height - this.Height;
                 }
-                if (Deskband.edge == Edge.Right)
+                if (Deskband.Edger == Edge.Right)
                 {
                     this.Left = SystemParameters.WorkArea.Width - this.Width;
                     this.Top = SystemParameters.WorkArea.Height - this.Height;
@@ -78,7 +78,7 @@ namespace QTranser
             }
         }
 
-        public void inputStrProsessing(object sender, KeyEventArgs e)
+        public void InputStrProsessing(object sender, KeyEventArgs e)
         {
             string str = ((TextBox)sender).Text;
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.L)
@@ -129,7 +129,7 @@ namespace QTranser
 
         private void StrIBox_KeyUp(object sender, KeyEventArgs e)
         {
-            inputStrProsessing(sender, e);
+            InputStrProsessing(sender, e);
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
