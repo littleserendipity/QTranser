@@ -33,7 +33,7 @@ Ctrl+Q 这个更厉害，按下Ctrl+Q您就可以：
 
 ![翻译结果显示](./screenshot/输入文字.png)
 
-## 下载安装（暂时这样）
+## 下载安装
 下载安装包： [QTranser](https://raw.githubusercontent.com/xyfll7/QTranser/master/QTranserInstaller/Debug/QTranserInstaller.msi) 
 
 ## 马上要新增的功能
