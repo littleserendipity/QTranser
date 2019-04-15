@@ -12,7 +12,7 @@ namespace QTranser
 {
     [ComVisible(true)]
     [Guid("AA01ACB3-6CCC-497C-9CE6-9211F2EDFC10")]
-    [CSDeskBandRegistration(Name = "Qtranser")]
+    [CSDeskBandRegistration(Name = "Qtranser",ShowDeskBand = true)]
     public class Deskband : CSDeskBandWpf
     {
         public static Edge edge { get; set; }

@@ -141,7 +141,5 @@ namespace QTranser
         {
             QTranse.Mvvm.HistoryWord.RemoveAt(HistoryList.SelectedIndex);
         }
-
-
     }
 }

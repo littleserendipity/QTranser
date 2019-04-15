@@ -19,7 +19,7 @@ namespace QTestsConsole
     {
 
         private const string InventoryFileName = "inventory.json";
-        static void Main(string[] args)
+        static void Mainss(string[] args)
         {
             //CreateJson();
             //ConverObject();

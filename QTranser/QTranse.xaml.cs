@@ -27,6 +27,7 @@ using System.Net;
 using System.Threading;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
+using QTranser.QTranseLib.MongoDB;
 
 namespace QTranser
 {
@@ -73,12 +74,12 @@ namespace QTranser
             {
                 MessageBox.Show(err.ToString());
             }
-
         }
 
         private async void OnClipboardUpdate(object sender, EventArgs e)
         {
             string str = ClipboardGetText();
+           
             if (str == "") return;
             str = AddSpacesBeforeCapitalLetters(str);
 
@@ -94,6 +95,14 @@ namespace QTranser
             }
 
             if (Mvvm.HistoryWord.Count > 12) Mvvm.HistoryWord.RemoveAt(12);
+            try
+            {
+                await Task.Run(() => new Credentials(str));
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
         }
         private string ClipboardGetText()
         {
@@ -114,62 +123,46 @@ namespace QTranser
             str = Regex.Replace(str, "([a-z])([A-Z][a-z])", "$1 $2");
             return str;
         }
-        private /*async*/ string TranslationResultDisplay(string str)
+        private  string TranslationResultDisplay(string str)
         {
-            //try
-            //{
-                //await Task.Run(() =>
-                //{
-                    var translator = new Translator();
-                    string transResultJson = translator.dao(str);
-                    dynamic transResult = JToken.Parse(transResultJson) as dynamic;
-                    Mvvm.StrI = str;
-                    // 将翻译结果写入 transResult.json 文件
-                    Loger.json(transResult);
+            var translator = new Translator();
+            string transResultJson = translator.dao(str);
+            dynamic transResult = JToken.Parse(transResultJson) as dynamic;
+            Mvvm.StrI = str;
+            // 将翻译结果写入 transResult.json 文件
+            Loger.json(transResult);
 
-                    string detailsStr = transResult?.translation?[0] + Environment.NewLine;
+            string detailsStr = transResult?.translation?[0] + Environment.NewLine;
 
-                    if (transResult?.basic != null)
+            if (transResult?.basic != null)
+            {
+                detailsStr += "----------------" + Environment.NewLine;
+                foreach (var strr in transResult?.basic?.explains)
+                {
+                    detailsStr += strr + Environment.NewLine;
+                }
+            }
+
+            if (transResult?.web != null)
+            {
+                detailsStr += "----------------" + Environment.NewLine;
+                foreach (var element in transResult.web)
+                {
+                    detailsStr += element.key + Environment.NewLine;
+                    if (element?.value != null)
                     {
-                        detailsStr += "----------------" + Environment.NewLine;
-                        foreach (var strr in transResult?.basic?.explains)
+                        foreach (var strr in element.value)
                         {
-                            detailsStr += strr + Environment.NewLine;
+                            detailsStr += "  " + strr + Environment.NewLine;
                         }
                     }
-
-                    if (transResult?.web != null)
-                    {
-                        detailsStr += "----------------" + Environment.NewLine;
-                        foreach (var element in transResult.web)
-                        {
-                            detailsStr += element.key + Environment.NewLine;
-                            if (element?.value != null)
-                            {
-                                foreach (var strr in element.value)
-                                {
-                                    detailsStr += "  " + strr + Environment.NewLine;
-                                }
-                            }
-                        }
-                    }
-                    string s = transResult?.translation?[0];
-                    string z = detailsStr.Substring(0, detailsStr.Length - 2);
-                    Mvvm.StrQ = s.Replace("\n"," ");
-                    Mvvm.StrO = z;
-                    return z;
-                //});
-            //}
-            //catch (WebException)
-            //{
-            //    Mvvm.StrQ = "哎呦~无法连接网络...";
-            //    Mvvm.StrI = "哎呦~无法连接网络...";
-            //    Mvvm.StrO = "Ouch ~ can't connect to Internet...";
-            //}
-            //catch (Exception err)
-            //{
-            //    Loger.str(err.ToString());
-            //}
+                }
+            }
+            string s = transResult?.translation?[0];
+            string z = detailsStr.Substring(0, detailsStr.Length - 2);
+            Mvvm.StrQ = s.Replace("\n"," ");
+            Mvvm.StrO = z;
+            return z;
         }
         
         private void RegisterHotKey()

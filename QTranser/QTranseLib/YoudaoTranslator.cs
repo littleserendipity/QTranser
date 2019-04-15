@@ -24,7 +24,7 @@ namespace QTranser.QTranseLib
             long millis = (long)ts.TotalMilliseconds;
             string curtime = Convert.ToString(millis / 1000);
             dic.Add("curtime", curtime);
-            string signStr = appKey + Truncate(q) + salt + curtime + appSecret; ;
+            string signStr = appKey + Truncate(q) + salt + curtime + appSecret; 
             string sign = ComputeHash(signStr, new SHA256CryptoServiceProvider());
             dic.Add("q", System.Net.WebUtility.UrlEncode(q));
             dic.Add("appKey", appKey);

@@ -1,0 +1,7 @@
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserInstaller.exe.config
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserInstaller.exe
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserInstaller.pdb
+C:\Users\Administrator\source\repos\QTranser\QTranserInstaller\obj\Debug\QTranserInstaller.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\QTranser\QTranserInstaller\obj\Debug\QTranserInstaller.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\QTranser\QTranserInstaller\obj\Debug\QTranserInstaller.exe
+C:\Users\Administrator\source\repos\QTranser\QTranserInstaller\obj\Debug\QTranserInstaller.pdb
