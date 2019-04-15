@@ -17,5 +17,5 @@
 于是从头学习C#将它实现出来。
 
 ## 感谢 大飞牛
-如果您使用Mac请下载Mac版的“快译”
-https://itunes.apple.com/cn/app/%E5%BF%AB%E8%AF%91-%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%99%BA%E8%83%BD%E5%AD%97%E5%85%B8/id1217010477?mt=12
+如果您使用Mac请下载Mac版的
+[“快译”](https://itunes.apple.com/cn/app/%E5%BF%AB%E8%AF%91-%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%99%BA%E8%83%BD%E5%AD%97%E5%85%B8/id1217010477?mt=12)
