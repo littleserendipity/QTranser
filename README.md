@@ -1,8 +1,9 @@
 # QTranser
-一款简单的翻译软件
+一款简单的翻译软件（非常方便使用）
 
-## 非常方便使用
+## 厉害的Ctrl+C 
 您只需要按下Ctrl+C将文字复制进剪切板：
+![Shell Desk Band Screenshot](./docs/extensions/deskband/deskband-screenshot.png)
 
 这是一款从Mac中叫[“快译”](https://itunes.apple.com/cn/app/%E5%BF%AB%E8%AF%91-%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%99%BA%E8%83%BD%E5%AD%97%E5%85%B8/id1217010477?mt=12)的软件模仿来的
 
