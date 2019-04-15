@@ -31,9 +31,11 @@ Ctrl+Q 这个更厉害，按下Ctrl+Q您就可以：
 
 ![翻译结果显示](./screenshot/输入文字.png)
 
-## 下载安装
+## 下载安装（暂时这样）
 暂时就这里下载吧：https://share.weiyun.com/5yemsgO
 双击运行： installer.bat 
+然后必须要点这里，才能正确打开软件：
+![翻译结果显示](./screenshot/安装.png)
 
 ## 马上要新增的功能
 Ctrl+C时朗读英文发音
