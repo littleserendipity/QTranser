@@ -6,7 +6,7 @@
 
 ![翻译结果显示](./screenshot/翻译结果显示.png)
 
-这是一款从Mac中叫[“快译”](https://itunes.apple.com/cn/app/%E5%BF%AB%E8%AF%91-%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%99%BA%E8%83%BD%E5%AD%97%E5%85%B8/id1217010477?mt=12)的软件模仿来的
+这是一款从Mac中叫[“快译”](https://itunes.apple.com/cn/app/%E5%BF%AB%E8%AF%91-%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%99%BA%E8%83%BD%E5%AD%97%E5%85%B8/id1217010477?mt=12)的翻译软件复刻而来的
 
 学代码肯定要读英文，我尝试了很多翻译软件
 
