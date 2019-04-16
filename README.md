@@ -1,7 +1,7 @@
 # QTranser
 一款简单的翻译软件（非常方便使用）
 
-下载安装包： [QTranser(Win10 X64)](https://raw.githubusercontent.com/xyfll7/QTranser/master/Installer/Debug/Installer.msi) 
+下载安装包： [QTranser(Win10 X64)](https://raw.githubusercontent.com/xyfll7/QTranser/master/QTranser_Installer/Debug/QTranser_Installer.msi) 
 
 ## 厉害的Ctrl+C 
 您只需要按下Ctrl+C将文字复制进剪切板：
@@ -34,7 +34,7 @@ Ctrl+Q 这个更厉害，按下Ctrl+Q您就可以：
 ![翻译结果显示](./screenshot/输入文字.png)
 
 ## 下载安装
-下载安装包： [QTranser(Win10 X64)](https://raw.githubusercontent.com/xyfll7/QTranser/master/Installer/Debug/Installer.msi) 
+下载安装包： [QTranser(Win10 X64)](https://raw.githubusercontent.com/xyfll7/QTranser/master/QTranser_Installer/Debug/QTranser_Installer.msi) 
 
 ## 马上要新增的功能
 Ctrl+C时朗读英文发音
