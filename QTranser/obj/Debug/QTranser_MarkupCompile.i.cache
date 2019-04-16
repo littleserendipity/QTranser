@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;DESKBAND_WPF DESKBAND_WPF_TRANSPARENCY
 
-31119235043
+4-1405475188
 2-2009963441
-261144179135
+28-1473336657
 130-2051357745
-QShower.xaml;QTranse.xaml;QWindow.xaml;
+App\App.xaml;QShower.xaml;QTranse.xaml;App\AppWindow.xaml;
 
 False
 

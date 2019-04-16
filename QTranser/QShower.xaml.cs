@@ -1,5 +1,6 @@
 ﻿using CSDeskBand;
 using HotKeyEditor;
+using QTranser.QTranseLib;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

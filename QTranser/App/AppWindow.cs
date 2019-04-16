@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QTranser.QTranseLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,16 +8,19 @@ using System.Windows;
 
 namespace QTranser
 {
-    class QWindowApp
+    partial class AppWindow
     {
         public partial class App : Application
         {
             [STAThread()]
             public static void Main()
             {
-                Application app = new Application();
-                QWindow qWindow = new QWindow();
-                app.Run(qWindow);
+                WpfApp1.App app = new WpfApp1.App();
+                app.InitializeComponent();
+                app.Run();
+                // 全局异常捕获
+                //new UnhandledException();
+
             }
         }
     }

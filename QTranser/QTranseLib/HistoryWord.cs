@@ -26,6 +26,5 @@ namespace QTranser
                 _translate = value;
             }
         }
-        
     }
 }

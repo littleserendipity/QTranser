@@ -23,32 +23,12 @@ namespace QTranserUninstall
                 proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;  // 这里设置DOS窗口不显示，经实践可行
                 proc.Start();
                 proc.WaitForExit();
-                RestartExplorer();
+                RestartExplorer.Restart();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
             }
         }
-
-        static public void RestartExplorer()
-        {
-            foreach (Process p in Process.GetProcesses())
-            {
-                // In case we get Access Denied
-                try
-                {
-                    if (p.MainModule.FileName.ToLower().EndsWith(":\\windows\\explorer.exe"))
-                    {
-                        p.Kill();
-                        break;
-                    }
-                }
-                catch
-                { }
-            }
-            Process.Start("explorer.exe");
-        }
-
     }
 }

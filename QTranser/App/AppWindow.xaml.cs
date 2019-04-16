@@ -18,9 +18,9 @@ namespace QTranser
     /// <summary>
     /// QWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class QWindow : Window
+    public partial class AppWindow : Window
     {
-        public QWindow()
+        public AppWindow()
         {
             InitializeComponent();
             new QTranse();

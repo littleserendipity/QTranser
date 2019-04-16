@@ -11,17 +11,17 @@ namespace QTranser.QTranseLib.MongoDB
     {
         public  Credentials(string historyWord)
         {
-            string username = "xyfRW";
-            string password = "yangqiRW";
-            string mongoDbAuthMechanism = "SCRAM-SHA-1";
-            MongoInternalIdentity internalIdentity = new MongoInternalIdentity("tests", username);
-            PasswordEvidence passwordEvidence = new PasswordEvidence(password);
-            MongoCredential mongoCredential = new MongoCredential(mongoDbAuthMechanism, internalIdentity, passwordEvidence);
-            String mongoHost = "47.95.197.94";
-            MongoServerAddress address = new MongoServerAddress(mongoHost);
-            MongoClientSettings settings = new MongoClientSettings();
-            settings.Credential = mongoCredential;
-            settings.Server = address;
+            //string username = "xyfRW";
+            //string password = "yangqiRW";
+            //string mongoDbAuthMechanism = "SCRAM-SHA-1";
+            //MongoInternalIdentity internalIdentity = new MongoInternalIdentity("tests", username);
+            //PasswordEvidence passwordEvidence = new PasswordEvidence(password);
+            //MongoCredential mongoCredential = new MongoCredential(mongoDbAuthMechanism, internalIdentity, passwordEvidence);
+            //String mongoHost = "47.95.197.94";
+            //MongoServerAddress address = new MongoServerAddress(mongoHost);
+            //MongoClientSettings settings = new MongoClientSettings();
+            //settings.Credential = mongoCredential;
+            //settings.Server = address;
 
             string st = "mongodb://xyfRW:yangqiRW@47.95.197.94:27017/tests?authSource=tests";
 

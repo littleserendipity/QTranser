@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -31,14 +32,10 @@ namespace QTranserInstall
             {
                 Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
             }
+
+            Thread.Sleep(1000);
             BandOperate.ShowBand(typeof(QTranse));
-            //Show();
         }
-        private async static void Show()
-        {
-            await Task.Run(() => {
-                BandOperate.ShowBand(typeof(QTranse));
-            });
-        }
+
     }
 }

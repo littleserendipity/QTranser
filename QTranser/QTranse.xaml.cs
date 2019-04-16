@@ -28,6 +28,7 @@ using System.Threading;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using QTranser.QTranseLib.MongoDB;
+using System.Windows.Interop;
 
 namespace QTranser
 {
@@ -123,7 +124,7 @@ namespace QTranser
             str = Regex.Replace(str, "([a-z])([A-Z][a-z])", "$1 $2");
             return str;
         }
-        private  string TranslationResultDisplay(string str)
+        private string TranslationResultDisplay(string str)
         {
             var translator = new Translator();
             string transResultJson = translator.dao(str);
@@ -166,7 +167,7 @@ namespace QTranser
             {
                 //MessageBox.Show(err.ToString());
                 Mvvm.StrQ = s;
-                Mvvm.StrQ = err.ToString(); 
+                Mvvm.StrQ = err.ToString();
             }
             Mvvm.StrO = z;
             return z;

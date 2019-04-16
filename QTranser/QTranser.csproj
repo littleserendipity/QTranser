@@ -90,13 +90,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CSDeskband\BandOperate.cs" />
-    <Compile Include="HistoryWord.cs" />
-    <Compile Include="Loger.cs" />
+    <Compile Include="QTranseLib\HistoryWord.cs" />
+    <Compile Include="QTranseLib\Loger.cs" />
     <Compile Include="QShower.xaml.cs">
       <DependentUpon>QShower.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QWindowApp.cs" />
+    <Compile Include="App\AppWindow.cs" />
     <Compile Include="QTranseLib\ClipboardMonitor.cs" />
     <Compile Include="QTranseLib\GlobalHotKey\HotKey.cs" />
     <Compile Include="QTranseLib\GlobalHotKey\HotKeyManager.cs" />
@@ -107,12 +110,17 @@
     <Compile Include="QTranseLib\HotKeyEditor\HotKeyHelper.cs" />
     <Compile Include="QTranseLib\MongoDB\Credentials.cs" />
     <Compile Include="QTranseLib\SysColorChanger.cs" />
+    <Compile Include="QTranseLib\GlobalUnhandledException.cs" />
     <Compile Include="QTranseLib\YoudaoTranslator.cs" />
-    <Compile Include="QWindow.xaml.cs">
-      <DependentUpon>QWindow.xaml</DependentUpon>
+    <Compile Include="App\AppWindow.xaml.cs">
+      <DependentUpon>AppWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModles\MainViewModel.cs" />
     <Compile Include="ViewModles\ViewModel.cs" />
+    <Page Include="App\App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="QShower.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,7 +135,7 @@
       <DependentUpon>QTranse.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="QWindow.xaml">
+    <Page Include="App\AppWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,11 +191,10 @@
     <Content Include="tools\RegAsm.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="tools\translate.ico" />
+    <Resource Include="image\uninstall.ico" />
+    <Resource Include="image\translate.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="image\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\StrongNamer.0.0.8\build\StrongNamer.targets" Condition="Exists('..\packages\StrongNamer.0.0.8\build\StrongNamer.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
