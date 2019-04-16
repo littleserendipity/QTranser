@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{320AEC6B-7B87-4D93-B886-8EE63E80CAA2}</ProjectGuid>
-    <OutputType>library</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>QTranser</RootNamespace>
     <AssemblyName>QTranser</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -38,6 +38,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DnsClient, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
@@ -92,6 +96,7 @@
     <Compile Include="QShower.xaml.cs">
       <DependentUpon>QShower.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QWindowApp.cs" />
     <Compile Include="QTranseLib\ClipboardMonitor.cs" />
     <Compile Include="QTranseLib\GlobalHotKey\HotKey.cs" />
     <Compile Include="QTranseLib\GlobalHotKey\HotKeyManager.cs" />
@@ -103,6 +108,9 @@
     <Compile Include="QTranseLib\MongoDB\Credentials.cs" />
     <Compile Include="QTranseLib\SysColorChanger.cs" />
     <Compile Include="QTranseLib\YoudaoTranslator.cs" />
+    <Compile Include="QWindow.xaml.cs">
+      <DependentUpon>QWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModles\MainViewModel.cs" />
     <Compile Include="ViewModles\ViewModel.cs" />
     <Page Include="QShower.xaml">
@@ -119,6 +127,10 @@
       <DependentUpon>QTranse.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -156,6 +168,9 @@
     </None>
     <None Include="tools\regasm.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tools\UninstallEXE.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="tools\Uninstall.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

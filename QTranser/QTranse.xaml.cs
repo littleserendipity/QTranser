@@ -130,7 +130,7 @@ namespace QTranser
             dynamic transResult = JToken.Parse(transResultJson) as dynamic;
             Mvvm.StrI = str;
             // 将翻译结果写入 transResult.json 文件
-            Loger.json(transResult);
+            //Loger.json(transResult);
 
             string detailsStr = transResult?.translation?[0] + Environment.NewLine;
 
@@ -160,7 +160,14 @@ namespace QTranser
             }
             string s = transResult?.translation?[0];
             string z = detailsStr.Substring(0, detailsStr.Length - 2);
-            Mvvm.StrQ = s.Replace("\n"," ");
+            try
+            { Mvvm.StrQ = s.Replace("\n", " "); }
+            catch (Exception err)
+            {
+                //MessageBox.Show(err.ToString());
+                Mvvm.StrQ = s;
+                Mvvm.StrQ = err.ToString(); 
+            }
             Mvvm.StrO = z;
             return z;
         }

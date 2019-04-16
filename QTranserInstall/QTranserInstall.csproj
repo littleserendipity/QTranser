@@ -51,6 +51,11 @@
     <ApplicationIcon>translate.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QTranser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=05cf2e819b378b04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\QTranser\bin\Debug\tools\QTranser.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

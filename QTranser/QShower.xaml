@@ -278,7 +278,6 @@
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     </ListBox>
-                    
                     <!--结束工作-->
                 </StackPanel>
             </TabItem>
@@ -298,6 +297,7 @@
                 </StackPanel>
             </TabItem>
         </TabControl>
+
 
     </StackPanel>
 </Window>

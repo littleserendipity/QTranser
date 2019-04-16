@@ -6,12 +6,10 @@ mshta vbscript:createobject("shell.application").shellexecute("%~s0","goto :Admi
 
 rem 以上管理员权限
 
-
 @echo OFF
 title Install DeskBand
 @echo ON
 @setlocal enableextensions
-rem @cd "%~dp0"/QTranser/bin/Debug
 
 rem Check permissions
 net session >nul 2>&1

@@ -1,9 +1,12 @@
-﻿using System;
+﻿using CSDeskBand;
+using QTranser;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace QTranserInstall
 {
@@ -28,6 +31,14 @@ namespace QTranserInstall
             {
                 Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
             }
+            BandOperate.ShowBand(typeof(QTranse));
+            //Show();
+        }
+        private async static void Show()
+        {
+            await Task.Run(() => {
+                BandOperate.ShowBand(typeof(QTranse));
+            });
         }
     }
 }
