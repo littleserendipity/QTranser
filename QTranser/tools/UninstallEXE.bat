@@ -24,11 +24,6 @@ if %errorLevel% == 0 (
 rem "%~dp0tools\gacutil.exe" /nologo /u "%~dp0QTranser.dll"
 "%~dp0RegAsm.exe" /nologo /unregister "%~dp0..\QTranser.dll"
 
-rem taskkill /f /im "explorer.exe"
-rem Pause
-rem start explorer.exe
-
-rem Pause
 
 
 

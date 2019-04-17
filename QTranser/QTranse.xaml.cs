@@ -131,7 +131,7 @@ namespace QTranser
             dynamic transResult = JToken.Parse(transResultJson) as dynamic;
             Mvvm.StrI = str;
             // 将翻译结果写入 transResult.json 文件
-            //Loger.json(transResult);
+            Loger.json(transResult);
 
             string detailsStr = transResult?.translation?[0] + Environment.NewLine;
 

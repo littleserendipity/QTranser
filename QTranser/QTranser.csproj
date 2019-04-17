@@ -111,7 +111,9 @@
     <Compile Include="QTranseLib\MongoDB\Credentials.cs" />
     <Compile Include="QTranseLib\SysColorChanger.cs" />
     <Compile Include="QTranseLib\GlobalUnhandledException.cs" />
-    <Compile Include="QTranseLib\YoudaoTranslator.cs" />
+    <Compile Include="QTranseLib\youdaoapi\Getidkey.cs" />
+    <Compile Include="QTranseLib\youdaoapi\Idkey.cs" />
+    <Compile Include="QTranseLib\youdaoapi\YoudaoTranslator.cs" />
     <Compile Include="App\AppWindow.xaml.cs">
       <DependentUpon>AppWindow.xaml</DependentUpon>
     </Compile>
@@ -176,6 +178,9 @@
     </None>
     <None Include="tools\regasm.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tools\restart.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="tools\UninstallEXE.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

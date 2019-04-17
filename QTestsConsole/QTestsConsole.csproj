@@ -61,6 +61,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="QTranserInstaller.cs" />
+    <Compile Include="JSON\RestartShell_TrayWnd.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

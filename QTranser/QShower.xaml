@@ -194,8 +194,7 @@
                              BorderThickness="0"
                              Padding="5" 
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                             >
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     </ListBox>
                 </StackPanel>
             </TabItem>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QTestsWindow"
         mc:Ignorable="d"
         Title="HttpTest" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <Button Content="Button"  Margin="13,237,0,0"  Width="75" Click="Button_Click" />
+    </StackPanel>
 </Window>

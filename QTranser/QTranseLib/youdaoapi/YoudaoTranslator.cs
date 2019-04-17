@@ -14,8 +14,8 @@ namespace QTranser.QTranseLib
             Dictionary<String, String> dic = new Dictionary<String, String>();
             string url = "http://openapi.youdao.com/api";
             string q = str;
-            string appKey = "4ac7903d8a0aa4fc";
-            string appSecret = "dsBDw9WHoYtSeW3B0WdSaAHIsexwlzz6";
+            string appKey = Idkey.Id;
+            string appSecret = Idkey.Key;
             string salt = DateTime.Now.Millisecond.ToString();
             dic.Add("from", "auto");
             dic.Add("to", "auto");

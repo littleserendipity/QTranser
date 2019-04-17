@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace QTranserUninstall
 {
@@ -13,7 +17,7 @@ namespace QTranserUninstall
             {
                 var ptr = FindWindow("Shell_TrayWnd", null);
                 // 关闭Sell_TrayWnd（explorer.exe）
-                PostMessage(ptr, WM_USER + 436, (IntPtr)0, (IntPtr)0);
+                PostMessage(ptr, WM_USER + 436, (IntPtr)0, (IntPtr)0); 
                 Thread.Sleep(2000);
             }
             catch (Exception ex)

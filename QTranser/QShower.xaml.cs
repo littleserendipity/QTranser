@@ -25,6 +25,7 @@ namespace QTranser
     /// </summary>
     public partial class QShower : Window
     {
+
         public QShower()
         {
             InitializeComponent();
@@ -140,6 +141,11 @@ namespace QTranser
         private void HistoryList_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
             QTranse.Mvvm.HistoryWord.RemoveAt(HistoryList.SelectedIndex);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Idkey.Key + ":" + Idkey.Id);
         }
     }
 }

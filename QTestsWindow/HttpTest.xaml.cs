@@ -20,25 +20,34 @@ namespace QTestsWindow
     /// </summary>
     public partial class HttpTest : Window
     {
+        HttpTestClasser http { get; set; } = new HttpTestClasser();
         public HttpTest()
         {
             InitializeComponent();
         }
-        private const string NorthwindUrl = "http://services.odata.org/Northwind/Northwind.svc/Regions";
-        public async Task GetDataSimpleAsync()
+
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            using (var client = new HttpClient())
-            {
-                HttpResponseMessage res = await client.GetAsync(NorthwindUrl);
-                if (res.IsSuccessStatusCode)
-                {
-                    Console.WriteLine((int)res.StatusCode);
-                    Console.WriteLine(":::::::::::");
-                    Console.WriteLine(res.ReasonPhrase);
-                    string resBodyAsText = await res.Content.ReadAsStringAsync();
-                    Console.WriteLine(res.ReasonPhrase);
-                }
-            }
+            //await http.GetDataAdvancedAsync();
+            //await http.GetDataWithExceptionsAsync();
+            //await http.GetDataWithHeadersAsync() ;
+            //await http.GetDataWithMessageHandlerAsync();
+            await http.getidkey();
+        }
+
+
+        public string Url
+        {
+            get { return (string)GetValue(UrlProperty); }
+            set { SetValue(UrlProperty, value); }
+        }
+        public static readonly DependencyProperty UrlProperty =
+            DependencyProperty.Register("Url", typeof(string), typeof(HttpTest), new PropertyMetadata(string.Empty));
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Url);
         }
     }
 }
