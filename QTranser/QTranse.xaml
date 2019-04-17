@@ -34,8 +34,8 @@
             Fill="{Binding LogoColor}"
             MinWidth="11"
             Height="22" 
-            MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"
-            MouseEnter="Rectangle_MouseEnter"
+            MouseLeftButtonDown="Logo_MouseLeftButtonDown"
+            MouseEnter="Logo_MouseEnter"
             />
     </StackPanel>
 </UserControl>

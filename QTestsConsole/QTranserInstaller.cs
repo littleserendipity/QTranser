@@ -1,9 +1,10 @@
-﻿using CSDeskBand;
-using QTranser;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -16,8 +17,7 @@ namespace QTests
     {
         static void Main()
         {
-            Console.ReadKey();
+            Console.WriteLine("asdfbb");
         }
-   
     }
 }

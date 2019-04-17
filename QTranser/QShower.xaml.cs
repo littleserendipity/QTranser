@@ -105,7 +105,7 @@ namespace QTranser
         }
 
         private bool IsTop { get; set; } = true;
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SetTop_Click(object sender, RoutedEventArgs e)
         {
             //后台代码动态修改控件模板属性 参考链接：https://www.itsvse.com/thread-2740-1-1.html
             Border border = (Border)((Button)sender).Template.FindName("Border", (Button)sender);
@@ -116,7 +116,6 @@ namespace QTranser
                 this.Deactivated -= Window_Deactivated;
                 textBlock.Text = " 取消置顶";
                 IsTop = false;
-
             }
             else
             {
@@ -133,12 +132,12 @@ namespace QTranser
             InputStrProsessing(sender, e);
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void HistoryList_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Clipboard.SetText(((TextBlock)sender).Text);
         }
 
-        private void TextBlock_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        private void HistoryList_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
             QTranse.Mvvm.HistoryWord.RemoveAt(HistoryList.SelectedIndex);
         }

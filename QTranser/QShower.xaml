@@ -133,15 +133,15 @@
         <DataTemplate x:Key="HistoryItemTemplate">
             <TextBlock 
                 Text="{Binding Path=Word}" 
-                MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"  
-                MouseRightButtonUp="TextBlock_MouseRightButtonUp"
+                MouseLeftButtonDown="HistoryList_MouseLeftButtonDown"  
+                MouseRightButtonUp="HistoryList_MouseRightButtonUp"
                 />
         </DataTemplate>
     </Window.Resources>
 <!--以上是Window资源-->
     <StackPanel Background="#4C000000">
         <Button 
-            Click="Button_Click" 
+            Click="SetTop_Click" 
             Style="{Binding ButtonStyle}"
             Template="{StaticResource ButtonTemplate}"
             WindowChrome.IsHitTestVisibleInChrome="True" 

@@ -250,7 +250,7 @@ namespace QTranser
             }
         }
 
-        private void Rectangle_MouseEnter(object sender, MouseEventArgs e)
+        private void Logo_MouseEnter(object sender, MouseEventArgs e)
         {
             // 必须借助真实鼠标/键盘按键 SetForeground函数 才能抢到焦点。
             Sim.Mouse.Keyboard.KeyUp(VirtualKeyCode.RIGHT);
@@ -264,7 +264,7 @@ namespace QTranser
             Shower.InputStrProsessing(sender, e);
         }
 
-        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);
         }
