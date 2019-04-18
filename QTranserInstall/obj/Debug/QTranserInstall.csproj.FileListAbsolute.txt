@@ -5,7 +5,6 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserInstall.
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserInstall.exe
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserInstall.pdb
 C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.csproj.CoreCompileInputs.cache
-C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.csproj.CopyComplete
 C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.exe
 C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.pdb
 C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.csprojAssemblyReference.cache

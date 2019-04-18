@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace QTranser
 {
@@ -12,7 +9,7 @@ namespace QTranser
     {
         public static void str(Object obj, bool IsAppend = false)
         {
-            string path = @"C:\Users\Administrator\Desktop\log.txt";
+            string path = @"..\log\log.txt";
             using (StreamWriter sw = new StreamWriter(path, IsAppend, Encoding.UTF8))
             {
                 sw.Write(obj);
@@ -21,7 +18,7 @@ namespace QTranser
         }
         public static void json(dynamic obj, bool IsAppend = false)
         {
-            string path = @"C:\Users\Administrator\Desktop\log.json";
+            string path = @"..\log\log.json";
             using (StreamWriter sw = new StreamWriter(path, IsAppend, Encoding.UTF8))
             {
                 JsonSerializer serializer = JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented });

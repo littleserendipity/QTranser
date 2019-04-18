@@ -1,0 +1,17 @@
+﻿{
+  "tSpeakUrl": "http://openapi.youdao.com/ttsapi?q=.+.+%5C%E6%97%A5%E5%BF%97&langType=zh-CHS&sign=E2AE982C0B86387BA1F6BED09F7F6A21&salt=1555545656093&voice=4&format=mp3&appKey=4ac7903d8a0aa4fc",
+  "query": "..\\log",
+  "translation": [
+    ". . \\日志"
+  ],
+  "errorCode": "0",
+  "dict": {
+    "url": "yddict://m.youdao.com/dict?le=eng&q=..%5Clog"
+  },
+  "webdict": {
+    "url": "http://m.youdao.com/dict?le=eng&q=..%5Clog"
+  },
+  "basic": null,
+  "l": "en2zh-CHS",
+  "speakUrl": "http://openapi.youdao.com/ttsapi?q=..%5Clog&langType=en&sign=9491C41A94DD682C21BA4F96AD16C4DD&salt=1555545656093&voice=4&format=mp3&appKey=4ac7903d8a0aa4fc"
+}

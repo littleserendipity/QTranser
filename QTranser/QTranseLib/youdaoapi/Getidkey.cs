@@ -1,11 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace QTranser.QTranseLib
 {
@@ -27,9 +22,9 @@ namespace QTranser.QTranseLib
                     Idkey.Key = transResult?.Key.ToString();
                 }
             }
-            catch (Exception ex)
+            catch (HttpRequestException)
             {
-                MessageBox.Show(ex.ToString());
+                QTranse.Mvvm.StrQ = "哎呦~网络异常";
             }
         }
     }

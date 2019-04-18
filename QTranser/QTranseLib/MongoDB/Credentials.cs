@@ -1,9 +1,5 @@
 ﻿using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QTranser.QTranseLib.MongoDB
 {
@@ -35,8 +31,15 @@ namespace QTranser.QTranseLib.MongoDB
             {
                 Word = historyWord
             };
-
-            coll.InsertOne(history);
+            try
+            {
+                coll.InsertOne(history);
+            }
+            catch(TimeoutException)
+            {
+                Loger.str("数据库连接超时");
+            }
+         
         }
     }
 }

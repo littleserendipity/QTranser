@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,7 +28,7 @@ namespace QTranser.QTranseLib
                 Loger.str("HResult::" + e.Exception.HResult,true);
                 Loger.str("HelpLink::" + e.Exception.HelpLink,true);
                 Loger.str("Data::" + e.Exception.Data,true);
-                Loger.str(":::::::::::::::::::::::::::::::::::::::",true);
+                Loger.str(":::::::::::::::::::::::::::::::::::::::！！",true);
             }
             catch (Exception ex)
             {

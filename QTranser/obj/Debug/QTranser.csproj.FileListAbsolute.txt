@@ -140,3 +140,5 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranser.dll
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranser.dll
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\restart.bat
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranser.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\log\log.json
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\log\log.txt

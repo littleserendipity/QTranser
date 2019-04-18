@@ -7,9 +7,9 @@ using System.Security.Cryptography;
 
 namespace QTranser.QTranseLib
 {
-    public class Translator
+    public class Youdao
     {
-        public string dao(string str)
+        public string translator(string str)
         {
             Dictionary<String, String> dic = new Dictionary<String, String>();
             string url = "http://openapi.youdao.com/api";
@@ -42,31 +42,40 @@ namespace QTranser.QTranseLib
 
         protected static string Post(string url, Dictionary<String, String> dic)
         {
-            string result = "";
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-            req.Method = "POST";
-            req.ContentType = "application/x-www-form-urlencoded";
-            StringBuilder builder = new StringBuilder();
-            int i = 0;
-            foreach (var item in dic)
+            string result = "{}";
+            try
             {
-                if (i > 0)
-                    builder.Append("&");
-                builder.AppendFormat("{0}={1}", item.Key, item.Value);
-                i++;
+             
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                req.Method = "POST";
+                req.ContentType = "application/x-www-form-urlencoded";
+                StringBuilder builder = new StringBuilder();
+                int i = 0;
+                foreach (var item in dic)
+                {
+                    if (i > 0)
+                        builder.Append("&");
+                    builder.AppendFormat("{0}={1}", item.Key, item.Value);
+                    i++;
+                }
+                byte[] data = Encoding.UTF8.GetBytes(builder.ToString());
+                req.ContentLength = data.Length;
+                using (Stream reqStream = req.GetRequestStream())
+                {
+                    reqStream.Write(data, 0, data.Length);
+                    reqStream.Close();
+                }
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                Stream stream = resp.GetResponseStream();
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    result = reader.ReadToEnd();
+                }
+               
             }
-            byte[] data = Encoding.UTF8.GetBytes(builder.ToString());
-            req.ContentLength = data.Length;
-            using (Stream reqStream = req.GetRequestStream())
+            catch (WebException)
             {
-                reqStream.Write(data, 0, data.Length);
-                reqStream.Close();
-            }
-            HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-            Stream stream = resp.GetResponseStream();
-            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
-            {
-                result = reader.ReadToEnd();
+                QTranse.Mvvm.StrQ = "哎呦~网络异常";
             }
             return result;
         }

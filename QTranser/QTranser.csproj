@@ -95,7 +95,7 @@
     </Compile>
     <Compile Include="CSDeskband\BandOperate.cs" />
     <Compile Include="QTranseLib\HistoryWord.cs" />
-    <Compile Include="QTranseLib\Loger.cs" />
+    <Compile Include="log\Loger.cs" />
     <Compile Include="QShower.xaml.cs">
       <DependentUpon>QShower.xaml</DependentUpon>
     </Compile>
@@ -113,7 +113,7 @@
     <Compile Include="QTranseLib\GlobalUnhandledException.cs" />
     <Compile Include="QTranseLib\youdaoapi\Getidkey.cs" />
     <Compile Include="QTranseLib\youdaoapi\Idkey.cs" />
-    <Compile Include="QTranseLib\youdaoapi\YoudaoTranslator.cs" />
+    <Compile Include="QTranseLib\youdaoapi\Youdao.cs" />
     <Compile Include="App\AppWindow.xaml.cs">
       <DependentUpon>AppWindow.xaml</DependentUpon>
     </Compile>
@@ -162,6 +162,9 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="key.snk" />
+    <None Include="log\log.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="tools\installer.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -190,6 +193,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="log\log.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="tools\gacutil.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

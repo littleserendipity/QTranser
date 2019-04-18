@@ -1,34 +1,19 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using QTranser.ViewModles;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using QTranser.QTranseLib;
 using GlobalHotKey;
 using WindowsInput;
 using WindowsInput.Native;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
-using CSDeskBand;
-using System.Net;
 using System.Threading;
-using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using QTranser.QTranseLib.MongoDB;
-using System.Windows.Interop;
 
 namespace QTranser
 {
@@ -96,14 +81,7 @@ namespace QTranser
             }
 
             if (Mvvm.HistoryWord.Count > 12) Mvvm.HistoryWord.RemoveAt(12);
-            try
-            {
-                await Task.Run(() => new Credentials(str));
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.ToString());
-            }
+            await Task.Run(() => new Credentials(str));
         }
         private string ClipboardGetText()
         {
@@ -126,8 +104,8 @@ namespace QTranser
         }
         private string TranslationResultDisplay(string str)
         {
-            var translator = new Translator();
-            string transResultJson = translator.dao(str);
+            var youdao = new Youdao();
+            string transResultJson = youdao.translator(str);
             dynamic transResult = JToken.Parse(transResultJson) as dynamic;
             Mvvm.StrI = str;
             // 将翻译结果写入 transResult.json 文件

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace QTranser.QTranseLib
+﻿namespace QTranser.QTranseLib
 {
     internal static class Idkey
     {
@@ -14,7 +8,7 @@ namespace QTranser.QTranseLib
         {
             get
             {
-                if(_id == "") Getidkey.getidkey();
+                if (_id == "") idkdy();
                 return _id;
             }
             set
@@ -26,13 +20,17 @@ namespace QTranser.QTranseLib
         {
             get
             {
-                if (_key == "") Getidkey.getidkey();
+                if (_key == "") idkdy();
                 return _key;
             }
             set
             {
                 _key = value;
             }
+        }
+        private async static void idkdy()
+        {
+            await Getidkey.getidkey();
         }
     }
 }
