@@ -160,7 +160,7 @@ namespace QTranser
                 TranslationResultDisplay(str);
                 return "";
             }
-            string s = transResult?.translation?[0];
+       
             Mvvm.StrI = str;
             // 将翻译结果写入 transResult.json 文件
             Loger.json(transResult);
@@ -193,9 +193,9 @@ namespace QTranser
             }
             try
             {
+                string s = transResult?.translation?[0];
                 string z = detailsStr.Substring(0, detailsStr.Length - 2);
                 Mvvm.StrQ = s.Replace("\n", "");
-                Mvvm.StrQ = s;
                 Mvvm.StrO = z;
                 return z;
             }
