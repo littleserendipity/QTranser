@@ -60,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GithubOAuth2.xaml.cs">
+      <DependentUpon>GithubOAuth2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="History\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -67,19 +70,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SampleMessageHandler.cs" />
+    <Compile Include="HTTP\SampleMessageHandler.cs" />
+    <Page Include="GithubOAuth2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="History\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HttpTest.xaml">
+    <Page Include="HTTP\HttpTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpTestClasser.cs" />
-    <Compile Include="HttpTest.xaml.cs">
+    <Compile Include="HTTP\HttpTestClasser.cs" />
+    <Compile Include="HTTP\HttpTest.xaml.cs">
       <DependentUpon>HttpTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

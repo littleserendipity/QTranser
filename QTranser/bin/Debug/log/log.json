@@ -1,56 +1,17 @@
 ﻿{
-  "tSpeakUrl": "http://openapi.youdao.com/ttsapi?q=%E9%AB%98%E5%85%B4%E7%9A%84%E6%98%AF&langType=zh-CHS&sign=F8BAC3192718863A8E9807186030E42A&salt=1555547106986&voice=4&format=mp3&appKey=4ac7903d8a0aa4fc",
-  "web": [
-    {
-      "value": [
-        "喜欢负罪"
-      ],
-      "key": "Sinners Delight"
-    },
-    {
-      "value": [
-        "运动鞋与服饰店",
-        "活动鞋与衣饰店",
-        "活动鞋与服装店"
-      ],
-      "key": "Sneake Delight"
-    },
-    {
-      "value": [
-        "极度乐趣"
-      ],
-      "key": "Bacardi Delight"
-    }
-  ],
-  "query": "delight",
+  "tSpeakUrl": "http://openapi.youdao.com/ttsapi?q=.+.+%5C%E6%97%A5%E5%BF%97&langType=zh-CHS&sign=E2AE982C0B86387BA1F6BED09F7F6A21&salt=1555545656093&voice=4&format=mp3&appKey=4ac7903d8a0aa4fc",
+  "query": "..\\log",
   "translation": [
-    "高兴的是"
+    ". . \\日志"
   ],
   "errorCode": "0",
   "dict": {
-    "url": "yddict://m.youdao.com/dict?le=eng&q=delight"
+    "url": "yddict://m.youdao.com/dict?le=eng&q=..%5Clog"
   },
   "webdict": {
-    "url": "http://m.youdao.com/dict?le=eng&q=delight"
+    "url": "http://m.youdao.com/dict?le=eng&q=..%5Clog"
   },
-  "basic": {
-    "exam_type": [
-      "TOEFL",
-      "高中",
-      "GRE"
-    ],
-    "us-phonetic": "dɪ'laɪt",
-    "phonetic": "dɪ'laɪt",
-    "uk-phonetic": "dɪ'laɪt",
-    "uk-speech": "http://openapi.youdao.com/ttsapi?q=delight&langType=en&sign=BCE5093711A9BBBC69459785AE5C84BA&salt=1555547106987&voice=5&format=mp3&appKey=4ac7903d8a0aa4fc",
-    "explains": [
-      "n. 高兴",
-      "vi. 高兴",
-      "vt. 使高兴",
-      "n. (Delight)人名；(英)迪莱特"
-    ],
-    "us-speech": "http://openapi.youdao.com/ttsapi?q=delight&langType=en&sign=BCE5093711A9BBBC69459785AE5C84BA&salt=1555547106987&voice=6&format=mp3&appKey=4ac7903d8a0aa4fc"
-  },
+  "basic": null,
   "l": "en2zh-CHS",
-  "speakUrl": "http://openapi.youdao.com/ttsapi?q=delight&langType=en&sign=B55BA7C0CC06B75A667E1F912BDAD1C7&salt=1555547106986&voice=4&format=mp3&appKey=4ac7903d8a0aa4fc"
+  "speakUrl": "http://openapi.youdao.com/ttsapi?q=..%5Clog&langType=en&sign=9491C41A94DD682C21BA4F96AD16C4DD&salt=1555545656093&voice=4&format=mp3&appKey=4ac7903d8a0aa4fc"
 }

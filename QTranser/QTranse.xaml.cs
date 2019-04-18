@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Text.RegularExpressions;
 using QTranser.QTranseLib.MongoDB;
+using System.Runtime.InteropServices;
 
 namespace QTranser
 {
@@ -58,7 +59,7 @@ namespace QTranser
             }
             catch(Exception err)
             {
-                MessageBox.Show(err.ToString());
+                //MessageBox.Show(err.ToString());
             }
         }
 
@@ -89,11 +90,57 @@ namespace QTranser
             if (Clipboard.ContainsText())
             {
                 try { str = Clipboard.GetText(); }
-                catch (Exception err)
-                { Loger.str(err.ToString(), true); }
+                catch (COMException) { }
+                finally
+                {
+                    Thread.Sleep(20);
+                    try { str = Clipboard.GetText(); }
+                    catch (COMException) { str = "剪切板被占用"; }
+                }
             }
+            str = Download(str);
             return str.Trim().Replace("  ", "");
         }
+
+        private string Download(string str)
+        {
+
+          
+            if (str.StartsWith("https://") && str.EndsWith(".git"))
+            {
+                ExecuteInCmd(str);
+                str = "正在下载";
+            }
+            return str;
+        }
+
+        public async void ExecuteInCmd(string str)
+        {
+            string cmdline = $"git clone {str}";
+            await Task.Run(() => {
+                using (var process = new Process())
+                {
+                    process.StartInfo.FileName = "cmd.exe";
+                    process.StartInfo.UseShellExecute = false;
+                    process.StartInfo.RedirectStandardInput = true;
+                    process.StartInfo.RedirectStandardOutput = true;
+                    process.StartInfo.RedirectStandardError = true;
+                    process.StartInfo.WorkingDirectory = @"C:\Users\Administrator\Desktop";
+                    process.StartInfo.CreateNoWindow = true;
+
+                    process.Start();
+                    process.StandardInput.AutoFlush = true;
+                    process.StandardInput.WriteLine(cmdline + " &exit");
+
+                    //获取cmd窗口的输出信息  
+                    string output = process.StandardOutput.ReadToEnd();
+                    MessageBox.Show(output);
+                    process.WaitForExit();
+                    process.Close();
+                }
+            });
+        }
+
         private string AddSpacesBeforeCapitalLetters(string str)
         {
             str = Regex.Replace(str, "([a-z])([A-Z](?=[A-Z])[a-z]*)", "$1 $2");
@@ -107,6 +154,13 @@ namespace QTranser
             var youdao = new Youdao();
             string transResultJson = youdao.translator(str);
             dynamic transResult = JToken.Parse(transResultJson) as dynamic;
+
+            if(transResult?.errorCode == "108")
+            {
+                TranslationResultDisplay(str);
+                return "";
+            }
+            string s = transResult?.translation?[0];
             Mvvm.StrI = str;
             // 将翻译结果写入 transResult.json 文件
             Loger.json(transResult);
@@ -137,18 +191,20 @@ namespace QTranser
                     }
                 }
             }
-            string s = transResult?.translation?[0];
-            string z = detailsStr.Substring(0, detailsStr.Length - 2);
             try
-            { Mvvm.StrQ = s.Replace("\n", " "); }
-            catch (Exception err)
             {
-                //MessageBox.Show(err.ToString());
+                string z = detailsStr.Substring(0, detailsStr.Length - 2);
+                Mvvm.StrQ = s.Replace("\n", "");
                 Mvvm.StrQ = s;
-                Mvvm.StrQ = err.ToString();
+                Mvvm.StrO = z;
+                return z;
             }
-            Mvvm.StrO = z;
-            return z;
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.ToString());
+                Mvvm.StrQ = ex.ToString();
+            }
+            return "";
         }
         
         private void RegisterHotKey()

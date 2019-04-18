@@ -32,3 +32,5 @@ C:\Users\Administrator\source\repos\QTranser\QTestsConsole\obj\Debug\QTests.exe
 C:\Users\Administrator\source\repos\QTranser\QTestsConsole\obj\Debug\QTests.pdb
 C:\Users\Administrator\source\repos\QTranser\QTestsConsole\obj\Debug\QTestsConsole.csprojAssemblyReference.cache
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\restart.bat
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\log\log.json
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\log\log.txt

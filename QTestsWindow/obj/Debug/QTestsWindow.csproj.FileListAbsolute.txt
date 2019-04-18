@@ -12,10 +12,12 @@ C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow
 C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.pdb
 C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.csprojAssemblyReference.cache
 C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\History\Window1.g.cs
-C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\HttpTest.g.cs
 C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\History\Window1.baml
-C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\HttpTest.baml
 C:\Users\Administrator\source\repos\QTranser\QTestsWindow\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Administrator\source\repos\QTranser\QTestsWindow\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Administrator\source\repos\QTranser\QTestsWindow\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\QTestsWindow.csproj.CopyComplete
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\HTTP\HttpTest.g.cs
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\GithubOAuth2.g.cs
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\GithubOAuth2.baml
+C:\Users\Administrator\source\repos\QTranser\QTestsWindow\obj\Debug\HTTP\HttpTest.baml

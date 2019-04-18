@@ -1,4 +1,6 @@
-﻿namespace QTranser.QTranseLib
+﻿using System.Windows;
+
+namespace QTranser.QTranseLib
 {
     internal static class Idkey
     {
@@ -8,7 +10,11 @@
         {
             get
             {
-                if (_id == "") idkdy();
+                if (_id == "")
+                {
+                    idkdy();
+                }
+             
                 return _id;
             }
             set
