@@ -18,13 +18,12 @@ namespace QTranser
         }
         public static void json(dynamic obj, bool IsAppend = false)
         {
-            //string path = @"..\log\log.json";
-            //using (StreamWriter sw = new StreamWriter(path, IsAppend, Encoding.UTF8))
-            //{
-            //    JsonSerializer serializer = JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented });
-            //    serializer.Serialize(sw, obj);
-            //}
-
+            string path = @"..\log\log.json";
+            using (StreamWriter sw = new StreamWriter(path, IsAppend, Encoding.UTF8))
+            {
+                JsonSerializer serializer = JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented });
+                serializer.Serialize(sw, obj);
+            }
         }
     }
 }

@@ -33,7 +33,7 @@ namespace QTranser.QTranseLib
             catch (Exception ex)
             {
                 //此时程序出现严重异常，将强制结束退出
-                MessageBox.Show("UI线程未捕获异常：程序发生致命错误，将终止，请联系运营商！");
+                MessageBox.Show("UI线程未捕获异常：程序发生致命错误，将终止，请联系小洋粉：l.7@qq.com");
             }
         }
 
@@ -48,7 +48,7 @@ namespace QTranser.QTranseLib
             StringBuilder sbEx = new StringBuilder();
             if (e.IsTerminating)
             {
-                sbEx.Append("!!程序发生致命错误，将终止，请联系运营商！\n");
+                sbEx.Append("!!程序发生致命错误，将终止，请联系小洋粉：l.7@qq.com！\n");
             }
             sbEx.Append("!!捕获未处理异常：");
             if (e.ExceptionObject is Exception)

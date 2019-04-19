@@ -17,7 +17,7 @@ namespace QTests
 {
     class QTranserInstaller
     {
-        static void Main()
+        static void Mainer()
         {
             getidkey();
             ReadLine();

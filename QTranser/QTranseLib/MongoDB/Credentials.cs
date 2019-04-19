@@ -37,7 +37,7 @@ namespace QTranser.QTranseLib.MongoDB
             }
             catch(TimeoutException)
             {
-                Loger.str("数据库连接超时");
+                // Loger.str("数据库连接超时");
             }
          
         }

@@ -139,7 +139,7 @@
         </DataTemplate>
     </Window.Resources>
 <!--以上是Window资源-->
-    <StackPanel Background="#4C000000">
+    <StackPanel Background="#4C000000" AllowDrop="True" Drop="StackPanel_Drop">
         <Button 
             Click="SetTop_Click" 
             Style="{Binding ButtonStyle}"
@@ -151,7 +151,7 @@
         <TabControl Margin="7 0" Background="Transparent" BorderThickness="0" >
             <TabItem Header="QTranser">
                 <StackPanel Margin="5 11">
-                    <Grid Height="170" >
+                    <Grid Height="270" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
@@ -165,7 +165,7 @@
                             FontSize="14"
                             TextWrapping="Wrap"
                             Background="Transparent" 
-                            Foreground="White"
+                            Foreground="LightGray"
                             CaretBrush="LightBlue"
                             BorderThickness="2 0 0 0" 
                             KeyUp="StrIBox_KeyUp"
@@ -181,7 +181,7 @@
                                      FontSize="14"
                                      TextWrapping="Wrap"
                                      Background="Transparent"
-                                     Foreground="White"
+                                     Foreground="LightGray"
                                      CaretBrush="LightBlue"
                                      BorderThickness="0"
                                      VerticalContentAlignment="Center" />

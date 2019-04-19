@@ -24,8 +24,8 @@ namespace QTranser
     public partial class QTranse : UserControl
     {
         public static HotKeyManager HotKeyManage;
-        public static MainViewModel Mvvm { get; set; } = new MainViewModel();
-        public static QShower Shower { get; set; }
+        public static MainViewModel Mvvm { get; private set; } = new MainViewModel();
+        public static QShower Shower { get; private set; }
 
         private ClipboardMonitor _clipboardMonitor;
         private InputSimulator Sim { get; set; } = new InputSimulator();
@@ -37,6 +37,7 @@ namespace QTranser
             DataContext = Mvvm;
         }
 
+        // 初始化/加载
         private void QTranser_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -62,7 +63,8 @@ namespace QTranser
                 //MessageBox.Show(err.ToString());
             }
         }
-
+        
+        // 剪切板事件处理
         private async void OnClipboardUpdate(object sender, EventArgs e)
         {
             string str = ClipboardGetText();
@@ -81,7 +83,7 @@ namespace QTranser
                 Mvvm.HistoryWord.Insert(0, new HistoryWord() { Word = str ,Translate = sss});
             }
 
-            if (Mvvm.HistoryWord.Count > 12) Mvvm.HistoryWord.RemoveAt(12);
+            if (Mvvm.HistoryWord.Count > 8) Mvvm.HistoryWord.RemoveAt(8);
             await Task.Run(() => new Credentials(str));
         }
         private string ClipboardGetText()
@@ -101,46 +103,6 @@ namespace QTranser
             str = Download(str);
             return str.Trim().Replace("  ", "");
         }
-
-        private string Download(string str)
-        {
-
-          
-            if (str.StartsWith("https://") && str.EndsWith(".git"))
-            {
-                ExecuteInCmd(str);
-                str = "正在下载";
-            }
-            return str;
-        }
-
-        public async void ExecuteInCmd(string str)
-        {
-            string cmdline = $"git clone {str}";
-            await Task.Run(() => {
-                using (var process = new Process())
-                {
-                    process.StartInfo.FileName = "cmd.exe";
-                    process.StartInfo.UseShellExecute = false;
-                    process.StartInfo.RedirectStandardInput = true;
-                    process.StartInfo.RedirectStandardOutput = true;
-                    process.StartInfo.RedirectStandardError = true;
-                    process.StartInfo.WorkingDirectory = @"C:\Users\Administrator\Desktop";
-                    process.StartInfo.CreateNoWindow = true;
-
-                    process.Start();
-                    process.StandardInput.AutoFlush = true;
-                    process.StandardInput.WriteLine(cmdline + " &exit");
-
-                    //获取cmd窗口的输出信息  
-                    string output = process.StandardOutput.ReadToEnd();
-                    MessageBox.Show(output);
-                    process.WaitForExit();
-                    process.Close();
-                }
-            });
-        }
-
         private string AddSpacesBeforeCapitalLetters(string str)
         {
             str = Regex.Replace(str, "([a-z])([A-Z](?=[A-Z])[a-z]*)", "$1 $2");
@@ -149,21 +111,22 @@ namespace QTranser
             str = Regex.Replace(str, "([a-z])([A-Z][a-z])", "$1 $2");
             return str;
         }
+        private int i { get; set; } = 0;
         private string TranslationResultDisplay(string str)
         {
             var youdao = new Youdao();
             string transResultJson = youdao.translator(str);
             dynamic transResult = JToken.Parse(transResultJson) as dynamic;
 
-            if(transResult?.errorCode == "108")
+            if(transResult?.errorCode == "108"  && i < 5)
             {
-                TranslationResultDisplay(str);
-                return "";
+                TranslationResultDisplay(str); i++;
+                return "{}";
             }
-       
+            i = 0;
             Mvvm.StrI = str;
             // 将翻译结果写入 transResult.json 文件
-            Loger.json(transResult);
+            // Loger.json(transResult);
 
             string detailsStr = transResult?.translation?[0] + Environment.NewLine;
 
@@ -202,11 +165,51 @@ namespace QTranser
             catch (Exception ex)
             {
                 //MessageBox.Show(ex.ToString());
-                Mvvm.StrQ = ex.ToString();
+                //Mvvm.StrQ = ex.ToString();···
             }
             return "";
         }
-        
+
+        //下载github文件
+        private string Download(string str)
+        {
+
+
+            if (str.StartsWith("https://") && str.EndsWith(".git"))
+            {
+                ExecuteInCmd(str);
+                str = "正在下载";
+            }
+            return str;
+        }
+        public async void ExecuteInCmd(string str)
+        {
+            string cmdline = $"git clone {str}";
+            await Task.Run(() => {
+                using (var process = new Process())
+                {
+                    process.StartInfo.FileName = "cmd.exe";
+                    process.StartInfo.UseShellExecute = false;
+                    process.StartInfo.RedirectStandardInput = true;
+                    process.StartInfo.RedirectStandardOutput = true;
+                    process.StartInfo.RedirectStandardError = true;
+                    process.StartInfo.WorkingDirectory = @"C:\Users\Administrator\Desktop";
+                    process.StartInfo.CreateNoWindow = true;
+
+                    process.Start();
+                    process.StandardInput.AutoFlush = true;
+                    process.StandardInput.WriteLine(cmdline + " &exit");
+
+                    //获取cmd窗口的输出信息  
+                    string output = process.StandardOutput.ReadToEnd();
+                    MessageBox.Show(output);
+                    process.WaitForExit();
+                    process.Close();
+                }
+            });
+        }
+
+        // 热键注册/响应
         private void RegisterHotKey()
         {
             try
@@ -255,7 +258,6 @@ namespace QTranser
                 Mvvm.HotKeyG = HotKeyManage.ToString() + "(冲突)";
             }
         }
-
         private void OnHotKeyPressed(object sender, KeyPressedEventArgs e)
         {
             if (e.HotKey.Key == HotKeyEditor.HotKey.hotKeyQ)
@@ -284,6 +286,7 @@ namespace QTranser
             }
         }
 
+        // 打开输入框
         private void Logo_MouseEnter(object sender, MouseEventArgs e)
         {
             // 必须借助真实鼠标/键盘按键 SetForeground函数 才能抢到焦点。
@@ -293,11 +296,13 @@ namespace QTranser
             textBox.SelectionStart = textBox.Text.Length;
         }
 
+        // 输入文字处理
         private void TextBox_KeyUp(object sender, KeyEventArgs e)
         {
             Shower.InputStrProsessing(sender, e);
         }
 
+        // 打开/关闭 翻译详情
         private void Logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);

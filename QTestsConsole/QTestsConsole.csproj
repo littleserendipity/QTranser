@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>draw_cuboid_64px_1066242_easyicon.net.ico</ApplicationIcon>
+    <ApplicationIcon>JSON\draw_cuboid_64px_1066242_easyicon.net.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -50,25 +50,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QueueTest\Document.cs" />
+    <Compile Include="QueueTest\DocumentManager.cs" />
+    <Compile Include="List\FindCountry.cs" />
     <Compile Include="JSON\BookProduct.cs" />
     <Compile Include="JSON\Inventory.cs" />
     <Compile Include="JSON\Product.cs" />
     <Compile Include="JSON\Program.cs" />
+    <Compile Include="List\Program0.cs" />
+    <Compile Include="QueueTest\ProcessDocuments.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QTranserInstaller.cs" />
+    <Compile Include="JSON\QTranserInstaller.cs" />
     <Compile Include="JSON\RestartShell_TrayWnd.cs" />
+    <Compile Include="List\Racer.cs" />
+    <Compile Include="List\RacerComparer.cs" />
+    <Compile Include="QueueTest\QueueTest.cs" />
+    <Compile Include="StackTest\StackTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="draw_cuboid_64px_1066242_easyicon.net.ico" />
+    <Content Include="JSON\draw_cuboid_64px_1066242_easyicon.net.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -29,6 +29,7 @@ namespace QTranser
         {
             QTranse.HotKeyManage.Dispose();
             QTranse.Shower.Close();
+            Properties.Settings.Default.Save();
         }
     }
 }

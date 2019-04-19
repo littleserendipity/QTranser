@@ -1,6 +1,8 @@
 ﻿using CSDeskBand;
+using IWshRuntimeLibrary;
 using QTranser.QTranseLib;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -83,6 +85,10 @@ namespace QTranser
                 {
                     Process.Start("https://www.baidu.com/s?ie=UTF-8&wd=" + str);
                 }
+                else if(str.StartsWith("https://") || str.StartsWith("http://") || str.StartsWith("www."))
+                {
+                    Process.Start(str);
+                }
                 else
                 {
                     Clipboard.SetText(str);
@@ -136,6 +142,16 @@ namespace QTranser
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(Idkey.Key + ":" + Idkey.Id);
+        }
+
+        private void StackPanel_Drop(object sender, DragEventArgs e)
+        {
+            string shortcutPath =  ((DataObject)e.Data).GetFileDropList()[0];
+            WshShell shell = new WshShell();
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
+            MessageBox.Show(shortcut.FullName);
+            MessageBox.Show(shortcut.TargetPath);
+            //Properties.Settings.Default.设置;
         }
     }
 }
