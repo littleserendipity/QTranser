@@ -34,7 +34,7 @@ namespace HotKeyEditor
                 String.Empty, KeyToString(Key));
         }
 
-        public string KeyToString(Key key)
+        private string KeyToString(Key key)
         {
             var ret = key.ToString();
 

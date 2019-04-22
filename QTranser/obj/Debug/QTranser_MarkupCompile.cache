@@ -8,13 +8,13 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\
 QTranser
 none
 false
-TRACE;DEBUG;DESKBAND_WPF DESKBAND_WPF_TRANSPARENCY
+TRACE;DEBUG;DESKBAND_WPF DESKBAND_WPF_TRANSPARENCY  TEST
 
-4-1405475188
+2-345267180
 2-2009963441
-301697599159
+27-49360825
 131-1286808893
-App\App.xaml;QShower.xaml;QTranse.xaml;App\AppWindow.xaml;
+QShower.xaml;QTranse.xaml;
 
 False
 

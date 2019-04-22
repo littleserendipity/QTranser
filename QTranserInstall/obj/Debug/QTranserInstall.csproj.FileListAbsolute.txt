@@ -7,3 +7,17 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserInstall.
 C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.exe
 C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.pdb
+C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\gacutil.exe
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\RegAsm.exe
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\installer.bat
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\gacutil.exe.config
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\regasm.exe.config
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\log\log.json
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\installerEXE.bat
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\restart.bat
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\UninstallEXE.bat
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\Uninstall.bat
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\log\log.txt
+C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.exe.config
+C:\Users\Administrator\source\repos\QTranser\QTranserInstall\obj\Debug\QTranserInstall.csproj.CopyComplete

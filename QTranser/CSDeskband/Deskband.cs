@@ -19,8 +19,6 @@ namespace QTranser
             Options.MinHorizontalSize.Width = 170;
             Edger = TaskbarInfo.Edge;
             TaskbarInfo.TaskbarEdgeChanged += (sender, e) => Edger = e.Edge;
-            // 全局异常捕获
-            new GlobalUnhandledException();
         }
 
         protected override UIElement UIElement => new QTranse();

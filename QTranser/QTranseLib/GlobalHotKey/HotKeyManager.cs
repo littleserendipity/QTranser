@@ -136,9 +136,7 @@ namespace GlobalHotKey
 
         private void onKeyPressed(KeyPressedEventArgs e)
         {
-            var handler = KeyPressed;
-            if (handler != null)
-                handler(this, e);
+            KeyPressed?.Invoke(this, e);
         }
 
         public override string ToString()

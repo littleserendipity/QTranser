@@ -21,7 +21,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;DESKBAND_WPF DESKBAND_WPF_TRANSPARENCY</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;DESKBAND_WPF DESKBAND_WPF_TRANSPARENCY  TEST</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -90,16 +90,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CSDeskband\BandOperate.cs" />
     <Compile Include="QTranseLib\HistoryWord.cs" />
     <Compile Include="log\Loger.cs" />
     <Compile Include="QShower.xaml.cs">
       <DependentUpon>QShower.xaml</DependentUpon>
     </Compile>
-    <Compile Include="App\AppWindow.cs" />
     <Compile Include="QTranseLib\ClipboardMonitor.cs" />
     <Compile Include="QTranseLib\GlobalHotKey\HotKey.cs" />
     <Compile Include="QTranseLib\GlobalHotKey\HotKeyManager.cs" />
@@ -114,16 +110,9 @@
     <Compile Include="QTranseLib\youdaoapi\Getidkey.cs" />
     <Compile Include="QTranseLib\youdaoapi\Idkey.cs" />
     <Compile Include="QTranseLib\youdaoapi\Youdao.cs" />
-    <Compile Include="App\AppWindow.xaml.cs">
-      <DependentUpon>AppWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="ViewModles\MainViewModel.cs" />
     <Compile Include="ViewModles\ViewModel.cs" />
-    <Page Include="App\App.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="QShower.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,10 +127,6 @@
       <DependentUpon>QTranse.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="App\AppWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

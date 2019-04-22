@@ -10,6 +10,7 @@ namespace QTranser
         public AppWindow()
         {
             InitializeComponent();
+
             new QTranse();
         }
     }

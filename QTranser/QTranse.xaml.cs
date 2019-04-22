@@ -31,6 +31,9 @@ namespace QTranser
         private InputSimulator Sim { get; set; } = new InputSimulator();
         private ForegroundWindow ForegroundW { get; set; } = new ForegroundWindow();
 
+        // 全局未捕获异常
+        private GlobalUnhandledException GlobalExcep { get; set; } = new GlobalUnhandledException();
+
         public QTranse()
         {
             InitializeComponent();
@@ -40,28 +43,20 @@ namespace QTranser
         // 初始化/加载
         private void QTranser_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                _clipboardMonitor = new ClipboardMonitor(this);
-                _clipboardMonitor.ClipboardUpdate += OnClipboardUpdate;
+            _clipboardMonitor = new ClipboardMonitor(this);
+            _clipboardMonitor.ClipboardUpdate += OnClipboardUpdate;
 
-                HotKeyManage = new HotKeyManager(this);
-                HotKeyManage.KeyPressed += OnHotKeyPressed;
-                RegisterHotKey();
+            HotKeyManage = new HotKeyManager(this);
+            HotKeyManage.KeyPressed += OnHotKeyPressed;
+            RegisterHotKey();
                 
-                var SysColor = new SysColorChanger(this);
-                SysColor.SysColorChange += () => Mvvm.LogoColor = SystemParameters.WindowGlassBrush;
+            var SysColor = new SysColorChanger(this);
+            SysColor.SysColorChange += () => Mvvm.LogoColor = SystemParameters.WindowGlassBrush;
 
-                // 必须在此处初始化，否则关闭QTranser后再次打开，就不会被初始化
-                // 那么_shower的各种方法也就没办法被调用，要是调用了就会引发异常，空值当然会引发异常了。
-                Shower = new QShower();
-
-                Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);
-            }
-            catch(Exception err)
-            {
-                //MessageBox.Show(err.ToString());
-            }
+            // 必须在此处初始化，否则关闭QTranser后再次打开，就不会被初始化
+            // 那么_shower的各种方法也就没办法被调用，要是调用了就会引发异常，空值当然会引发异常了。
+            //Shower = new QShower();
+            //Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);
         }
         
         // 剪切板事件处理
@@ -162,11 +157,7 @@ namespace QTranser
                 Mvvm.StrO = z;
                 return z;
             }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.ToString());
-                //Mvvm.StrQ = ex.ToString();···
-            }
+            catch (Exception) { }
             return "";
         }
 
@@ -268,13 +259,17 @@ namespace QTranser
             }
             if(e.HotKey.Key == HotKeyEditor.HotKey.hotKeyW)
             {
+                if (Shower == null)
+                { Shower = new QShower(); }
+
                 Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);
             }
             if (e.HotKey.Key == HotKeyEditor.HotKey.hotKeyB)
-            {
+            { 
+                
                 Sim.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_C);
                 Thread.Sleep(20);
-                string str = ClipboardGetText();
+                string str = ClipboardGetText(); 
                 Process.Start("https://www.baidu.com/s?ie=UTF-8&wd=" + str);
             }
             if (e.HotKey.Key == HotKeyEditor.HotKey.hotKeyG)
@@ -299,12 +294,16 @@ namespace QTranser
         // 输入文字处理
         private void TextBox_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Shower == null)
+            { Shower = new QShower(); }
             Shower.InputStrProsessing(sender, e);
         }
 
         // 打开/关闭 翻译详情
         private void Logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (Shower == null)
+            { Shower = new QShower(); }
             Shower.ShowOrHide(ActualHeight, ActualWidth, PointToScreen(new Point()).X);
         }
     }

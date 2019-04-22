@@ -42,10 +42,10 @@ namespace QTranser.QTranseLib
 
         protected static string Post(string url, Dictionary<String, String> dic)
         {
+
             string result = "{}";
             try
             {
-             
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
                 req.Method = "POST";
                 req.ContentType = "application/x-www-form-urlencoded";
