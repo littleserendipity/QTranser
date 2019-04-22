@@ -7,13 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QTranser", "QTranser\QTrans
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QTestsWindow", "QTestsWindow\QTestsWindow.csproj", "{FE2DCA9B-7D9D-49CD-91BA-75BA46CB0896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QTranserInstall", "QTranserInstall\QTranserInstall.csproj", "{823CFB54-C2C7-4BFE-A244-DA0111781944}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QTranserUninstall", "QTranserUninstall\QTranserUninstall.csproj", "{FD0D22EB-0535-4118-AF1A-A26A4AFB8EE5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QTestsConsole", "QTestsConsole\QTestsConsole.csproj", "{095654B5-90FB-4F85-ACA6-C8C9B96E5281}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QTranser_Installer", "QTranser_Installer\QTranser_Installer.vdproj", "{BB6A5BAB-B0A0-476A-8230-EDC1BED2BA72}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QTranser_Installer", "QTranser_Installer\QTranser_Installer.vdproj", "{87F6C38C-0511-4443-96D0-E01B4063BB5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,20 +25,12 @@ Global
 		{FE2DCA9B-7D9D-49CD-91BA-75BA46CB0896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2DCA9B-7D9D-49CD-91BA-75BA46CB0896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2DCA9B-7D9D-49CD-91BA-75BA46CB0896}.Release|Any CPU.Build.0 = Release|Any CPU
-		{823CFB54-C2C7-4BFE-A244-DA0111781944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{823CFB54-C2C7-4BFE-A244-DA0111781944}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{823CFB54-C2C7-4BFE-A244-DA0111781944}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{823CFB54-C2C7-4BFE-A244-DA0111781944}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD0D22EB-0535-4118-AF1A-A26A4AFB8EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD0D22EB-0535-4118-AF1A-A26A4AFB8EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD0D22EB-0535-4118-AF1A-A26A4AFB8EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD0D22EB-0535-4118-AF1A-A26A4AFB8EE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{095654B5-90FB-4F85-ACA6-C8C9B96E5281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{095654B5-90FB-4F85-ACA6-C8C9B96E5281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{095654B5-90FB-4F85-ACA6-C8C9B96E5281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{095654B5-90FB-4F85-ACA6-C8C9B96E5281}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB6A5BAB-B0A0-476A-8230-EDC1BED2BA72}.Debug|Any CPU.ActiveCfg = Debug
-		{BB6A5BAB-B0A0-476A-8230-EDC1BED2BA72}.Release|Any CPU.ActiveCfg = Release
+		{87F6C38C-0511-4443-96D0-E01B4063BB5E}.Debug|Any CPU.ActiveCfg = Debug
+		{87F6C38C-0511-4443-96D0-E01B4063BB5E}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

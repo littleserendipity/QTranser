@@ -1,9 +1,0 @@
-C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\bin\Debug\QTranserUninstall.exe.config
-C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\bin\Debug\QTranserUninstall.exe
-C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\bin\Debug\QTranserUninstall.pdb
-C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserUninstall.exe.config
-C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserUninstall.exe
-C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserUninstall.pdb
-C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\obj\Debug\QTranserUninstall.csproj.CoreCompileInputs.cache
-C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\obj\Debug\QTranserUninstall.exe
-C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\obj\Debug\QTranserUninstall.pdb
