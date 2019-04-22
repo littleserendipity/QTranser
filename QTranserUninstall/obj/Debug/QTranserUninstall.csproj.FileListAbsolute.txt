@@ -7,4 +7,3 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranserUninstal
 C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\obj\Debug\QTranserUninstall.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\obj\Debug\QTranserUninstall.exe
 C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\obj\Debug\QTranserUninstall.pdb
-C:\Users\Administrator\source\repos\QTranser\QTranserUninstall\obj\Debug\QTranserUninstall.csprojAssemblyReference.cache

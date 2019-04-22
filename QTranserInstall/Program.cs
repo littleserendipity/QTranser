@@ -22,7 +22,7 @@ namespace QTranserInstall
                 proc.StartInfo.UseShellExecute = true;
                 proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;  // 这里设置DOS窗口不显示，经实践可行
                 proc.Start();
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 RestartExplorer.Restart();
                 proc.StartInfo.FileName = "installerEXE.bat";
                 proc.Start();
