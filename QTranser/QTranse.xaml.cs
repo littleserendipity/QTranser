@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿//#define LOG
+//#define DOWNLOAD
+//#define MongoDB
+
+using Newtonsoft.Json.Linq;
 using QTranser.ViewModles;
 using System;
 using System.Linq;
@@ -79,7 +83,9 @@ namespace QTranser
             }
 
             if (Mvvm.HistoryWord.Count > 8) Mvvm.HistoryWord.RemoveAt(8);
+#if MongoDB
             await Task.Run(() => new Credentials(str));
+#endif
         }
         private string ClipboardGetText()
         {
@@ -95,7 +101,9 @@ namespace QTranser
                     catch (COMException) { str = "剪切板被占用"; }
                 }
             }
+#if DOWNLOAD
             str = Download(str);
+#endif
             return str.Trim().Replace("  ", "");
         }
         private string AddSpacesBeforeCapitalLetters(string str)
@@ -121,8 +129,9 @@ namespace QTranser
             i = 0;
             Mvvm.StrI = str;
             // 将翻译结果写入 transResult.json 文件
-            // Loger.json(transResult);
-
+#if LOG
+            Loger.json(transResult);
+#endif
             string detailsStr = transResult?.translation?[0] + Environment.NewLine;
 
             if (transResult?.basic != null)
@@ -164,8 +173,6 @@ namespace QTranser
         //下载github文件
         private string Download(string str)
         {
-
-
             if (str.StartsWith("https://") && str.EndsWith(".git"))
             {
                 ExecuteInCmd(str);

@@ -33,7 +33,7 @@ start explorer.exe >nul 2>&1
 @ echo **********************************************
 @ echo **********************************************
 @ echo.
-@ echo         \\        按任意键        //         
+@ echo         \\        按任意键        //     
 @ echo         //    继续安装QTranser    \\
 @ echo.
 @ echo **********************************************
@@ -48,6 +48,7 @@ start explorer.exe >nul 2>&1
 @ echo 当您想关闭QTranser时 
 @ echo 再次双击快捷方式
 @ echo 不续安装即是关闭QTrnaser 
+
 Pause  
 
 if defined %PROGRAMFILES(x86)% (
