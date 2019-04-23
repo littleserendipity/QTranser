@@ -1,13 +1,9 @@
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\gacutil.exe
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\RegAsm.exe
-C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\installer.bat
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\gacutil.exe.config
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\regasm.exe.config
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\log\log.json
-C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\installerEXE.bat
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\restart.bat
-C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\UninstallEXE.bat
-C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\Uninstall.bat
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\log\log.txt
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranser.pdb
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\Microsoft.Win32.Primitives.dll
@@ -139,3 +135,5 @@ C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranser.pdb
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranser.dll.config
 C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\QTranser.dll
 C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranser.dll
+C:\Users\Administrator\source\repos\QTranser\QTranser\obj\Debug\QTranser.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\QTranser\QTranser\bin\Debug\tools\installer.bat

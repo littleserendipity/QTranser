@@ -4,39 +4,52 @@ ver|find "5.">nul&&goto :Admin
 mshta vbscript:createobject("shell.application").shellexecute("%~s0","goto :Admin","","runas",1)(window.close)&goto :eof
 :Admin
 
-rem ä»¥ä¸Šç®¡ç†å‘˜æƒé™
+rem ÒÔÉÏÇëÇó¹ÜÀíÔ±È¨ÏÞ
 
-@echo OFF
-title Install DeskBand
-@echo ON
+title °²×° QTranser
 @setlocal enableextensions
 
 rem Check permissions
 net session >nul 2>&1
 if %errorLevel% == 0 (
-    echo Administrative permissions confirmed.
+    echo ¹ÜÀíÈ¨ÏÞÒÑÈ·ÈÏ >nul 2>&1
 ) else (
-    echo Please run this script with administrator permissions.
+    echo °²×°ÎÞ·¨¼ÌÐø£¬ÇëÒÔ¹ÜÀíÔ±È¨ÏÞÔËÐÐ´Ë½Å±¾
 	pause
     goto EXIT
 )
 
-rem "%~dp0tools\gacutil.exe" /nologo /u "%~dp0QTranser.dll"
-"%~dp0RegAsm.exe" /nologo /unregister "%~dp0..\QTranser.dll"
+"%~dp0RegAsm.exe" /nologo /unregister "%~dp0..\QTranser.dll" >nul 2>&1
 
-taskkill /f /im "explorer.exe"
-start explorer.exe
-
-Pause
-
+taskkill /f /im "explorer.exe" >nul 2>&1
+start explorer.exe >nul 2>&1
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo.
+@ echo         \\        °´ÈÎÒâ¼ü        //         
+@ echo         //    ¼ÌÐø°²×°QTranser    \\
+@ echo.
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo **********************************************
+@ echo µ±ÄúÏë¹Ø±ÕQTranserÊ± 
+@ echo ÔÙ´ÎË«»÷¿ì½Ý·½Ê½
+@ echo ²»Ðø°²×°¼´ÊÇ¹Ø±ÕQTrnaser 
+Pause  
 
 if defined %PROGRAMFILES(x86)% (
-    rem use /unregister to uninstall
-    @echo off
-
-	rem "%~dp0tools\gacutil.exe" /nologo /i "%~dp0QTranser.dll"
 	"%~dp0RegAsm.exe" /nologo /codebase "%~dp0..\QTranser.dll"
-
-) else (
-    rem %SystemRoot%\Microsoft.NET\Framework\v4.0.30319\regasm.exe /nologo /codebase "QTranser.dll"
-)
+) 
