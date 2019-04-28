@@ -34,7 +34,7 @@ namespace QTranser.QTranseLib
                 _key = value;
             }
         }
-        private async static void idkdy()
+        public async static void idkdy()
         {
             await Getidkey.getidkey();
         }

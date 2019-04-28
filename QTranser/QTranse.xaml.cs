@@ -121,10 +121,16 @@ namespace QTranser
             string transResultJson = youdao.translator(str);
             dynamic transResult = JToken.Parse(transResultJson) as dynamic;
 
-            if(transResult?.errorCode == "108"  && i < 5)
+            var errotCode = transResult?.errorCode;
+
+            if (errotCode == "108" && i < 5)
             {
                 TranslationResultDisplay(str); i++;
                 return "{}";
+            }
+            if (errotCode == "401")
+            {
+                Idkey.idkdy();
             }
             i = 0;
             Mvvm.StrI = str;
